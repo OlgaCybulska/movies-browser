@@ -1,15 +1,16 @@
 export const theme = {
   color: {
     white: "#FFFFFF",
-    lightGray: "#F5F5FA",
-    gray: "#E4E6F0",
+    whisper: "#F5F5FA", //light gray
+    mystic: "#E4E6F0", //a bit darker light gray
     silver: "#C4C4C4",
-    darkGray: "#7E839A",
-    slateGray: "#74788B",
-    almostBlack: "#18181B",
+    waterloo: "#7E839A", //darker gray with note of blue
+    stormGray: "#74788B", //dark gray
+    woodSmoke: "#18181B",
+    blackPearl: "#03121F",
     black: "#000000",
-    lightBlue: "#D6E4FF",
-    blue: "#0044CC",
+    pattensBlue: "#D6E4FF",
+    scienceBlue: "#0044CC",
   },
   breakpoint: {
     mobileMax: 767,
