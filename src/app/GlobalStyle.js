@@ -12,7 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Poppins', sans-serif;
         word-break: break-word;
-        background-color: ${({ theme }) => theme.color.lightGray};
+        background: ${({ theme }) => theme.color.whisper};
         font-size: 16px;
+        color: ${({ theme }) => theme.color.woodSmoke};
     }
 `;
