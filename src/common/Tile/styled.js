@@ -41,7 +41,7 @@ export const Year = styled.caption`
   padding: 0;
 `;
 
-export const Tags = styled.ul`
+export const Genres = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -51,7 +51,7 @@ export const Tags = styled.ul`
   flex-wrap: wrap;
 `;
 
-export const Tag = styled.li`
+export const GenreTag = styled.li`
   display: inline-flex;
   padding: 8px 16px;
   border-radius: 5px;

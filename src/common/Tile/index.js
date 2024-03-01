@@ -5,8 +5,8 @@ import {
   Rate,
   RateStar,
   Ratings,
-  Tag,
-  Tags,
+  GenreTag,
+  Genres,
   TileContainer,
   Votes,
   Year,
@@ -20,11 +20,11 @@ export const Tile = ({ title, year, rate, votes }) => {
       <Description>
         <MovieTitle>{title}</MovieTitle>
         <Year>{year}</Year>
-        <Tags>
-          <Tag>Action</Tag>
-          <Tag>Adventure</Tag>
-          <Tag>Drama</Tag>
-        </Tags>
+        <Genres>
+          <GenreTag>Action</GenreTag>
+          <GenreTag>Adventure</GenreTag>
+          <GenreTag>Drama</GenreTag>
+        </Genres>
       </Description>
       <Ratings>
         <RateStar />
