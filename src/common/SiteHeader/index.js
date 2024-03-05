@@ -1,16 +1,18 @@
 import NavBar from "../../features/NavBar";
-import { GridContainer, GridItem, StyledCameraIcon, StyledHeader, StyledTitle } from "./styled";
+import { FlexContainer, FlexItem, GridContainer, StyledCameraIcon, StyledHeader, StyledTitle } from "./styled";
 
 const SiteHeader = () => (
   <StyledHeader>
     <GridContainer>
-      <GridItem>
-        <StyledCameraIcon />
-        <StyledTitle>
-          Movies Browser
-        </StyledTitle>
+      <FlexContainer>
+        <FlexItem>
+          <StyledCameraIcon />
+          <StyledTitle>
+            Movies Browser
+          </StyledTitle>
+        </FlexItem>
         <NavBar />
-      </GridItem>
+      </FlexContainer>
     </GridContainer>
   </StyledHeader>
 );

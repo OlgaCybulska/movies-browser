@@ -10,7 +10,12 @@ export const StyledList = styled.ul`
   list-style: none;
   align-items: center;
   height: 100%;
-  margin: 0 80px 0 0;
+  margin: 0 0 0 80px;
+  padding: 0;
+
+  @media (max-width: ${({theme})=> theme.breakpoint.mobileMax}px) {
+    margin-left: 19px;
+  }
 `;
 
 export const StyledListItem = styled.li`
@@ -31,5 +36,6 @@ export const StyledListItem = styled.li`
     padding: 8px 12px;
     margin-right: 12px;
     font-size: 12px;
+    border: 1px solid ${({ theme }) => theme.color.black}
   }
 `;
