@@ -1,4 +1,4 @@
-import NavBar from "../../features/NavBar";
+import NavBar from "./NavBar";
 import { FlexContainer, FlexItem, GridContainer, StyledCameraIcon, StyledHeader, StyledTitle } from "./styled";
 
 const SiteHeader = () => (
