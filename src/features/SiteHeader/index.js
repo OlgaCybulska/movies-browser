@@ -1,4 +1,5 @@
 import NavBar from "./NavBar";
+import SearchBar from "./SearchBar";
 import { FlexContainer, FlexItem, GridContainer, StyledCameraIcon, StyledHeader, StyledTitle } from "./styled";
 
 const SiteHeader = () => (
@@ -13,6 +14,7 @@ const SiteHeader = () => (
         </FlexItem>
         <NavBar />
       </FlexContainer>
+      <SearchBar />
     </GridContainer>
   </StyledHeader>
 );

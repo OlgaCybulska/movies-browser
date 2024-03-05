@@ -5,6 +5,7 @@ export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.color.woodSmoke};
   height: 94px;
   margin: 0;
+  padding: 0 16px;
 
   @media (max-width: ${({theme})=>theme.breakpoint.mobileMax}px) {
     height: 142px;
@@ -39,12 +40,12 @@ export const StyledTitle = styled.h1`
 
 export const StyledCameraIcon = styled(CameraIcon)`
   display: inline-block;
-  margin: 0 12px 0 17px;
+  margin: 0 12px 0 0;
 
   @media (max-width: ${({theme})=>theme.breakpoint.mobileMax}px) {
     width: 17px;
     height: 17px;
-    margin: 0 8px 0 16px;
+    margin: 0 8px 0 0;
   }
 `;
 

@@ -14,7 +14,7 @@ export const StyledList = styled.ul`
   padding: 0;
 
   @media (max-width: ${({theme})=> theme.breakpoint.mobileMax}px) {
-    margin-left: 19px;
+    margin: 0;
   }
 `;
 
@@ -34,7 +34,7 @@ export const StyledListItem = styled.li`
 
   @media (max-width: ${({theme})=> theme.breakpoint.mobileMax}px) {
     padding: 8px 12px;
-    margin-right: 12px;
+    margin: 0 0 0 12px;
     font-size: 12px;
     border: 1px solid ${({ theme }) => theme.color.black}
   }
