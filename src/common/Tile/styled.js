@@ -5,9 +5,7 @@ export const TileContainer = styled.article`
   max-width: 324px;
   background-color: ${({ theme }) => theme.color.white};
   padding: 16px;
-  /* display: flex; */
   display: grid;
-  /* flex-direction: column; */
   grid-template-columns: 1fr;
   border-radius: 5px;
   box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
