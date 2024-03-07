@@ -10,7 +10,12 @@ export const MovieList = () => {
       <Section>
         <SectionHeader>Popular movies</SectionHeader>
         <GridWrapper>
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
+          <Tile
+            title="Mulan very long title"
+            year="2020"
+            rate="7,8"
+            votes="35"
+          />
           <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
           <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
           <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
