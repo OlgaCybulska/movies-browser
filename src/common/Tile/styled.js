@@ -23,7 +23,7 @@ export const TileContainer = styled.article`
     background-color: ${({ theme }) => theme.color.mystic};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.laptopMax}px) {
     max-width: 100%;
 
     &:hover {
@@ -43,7 +43,7 @@ export const Poster = styled.img`
   width: 292px;
   height: 434px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.laptopMax}px) {
     width: 100%;
     height: auto;
   }
@@ -111,6 +111,11 @@ export const GenreTag = styled.li`
   background-color: ${({ theme }) => theme.color.mystic};
   font-size: 14px;
   font-weight: 400;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px) {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     padding: 4px 8px;
