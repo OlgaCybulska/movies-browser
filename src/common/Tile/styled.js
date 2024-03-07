@@ -69,7 +69,7 @@ export const Description = styled.div`
   }
 `;
 
-export const MovieTitle = styled.h2`
+export const MovieTitle = styled.h3`
   font-weight: 500;
   font-size: 22px;
   margin: 0;
@@ -81,7 +81,7 @@ export const MovieTitle = styled.h2`
   }
 `;
 
-export const Year = styled.caption`
+export const Year = styled.h4`
   font-weight: 400;
   font-size: 16px;
   color: ${({ theme }) => theme.color.waterloo};
