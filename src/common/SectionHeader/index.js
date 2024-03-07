@@ -5,6 +5,11 @@ export const SectionHeader = styled.h1`
   font-size: 36px;
   color: ${({ theme }) => theme.color.blackPearl};
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.laptopMax}px) {
+    padding-left: 16px;
+    font-size: 32px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px) {
     padding-left: 16px;
     font-size: 26px;
