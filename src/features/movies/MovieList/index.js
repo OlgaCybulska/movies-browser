@@ -1,10 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
+import { fetchMovies } from "./moviesListSlice";
 import { GridWrapper } from "./styled";
 
 export const MovieList = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMovies());
+  }, [dispatch]);
+
   return (
     <Container>
       <Section>
