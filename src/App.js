@@ -4,6 +4,7 @@ import { theme } from "./app/theme";
 import { GlobalStyle } from "./app/GlobalStyle";
 import store from "./store";
 import { MovieList } from "./features/movies/MovieList";
+import { Pagination } from "./common/Pagination";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Provider store={store}>
         <GlobalStyle />
         <MovieList />
+        <Pagination />
       </Provider>
     </ThemeProvider>
   );
