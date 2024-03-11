@@ -25,12 +25,12 @@ export const Tile = ({ title, year, rate, votes }) => {
           <GenreTag>Adventure</GenreTag>
           <GenreTag>Drama</GenreTag>
         </Genres>
+        <Ratings>
+          <RateStar />
+          <Rate>{rate}</Rate>
+          <Votes>{votes} votes</Votes>
+        </Ratings>
       </Description>
-      <Ratings>
-        <RateStar />
-        <Rate>{rate}</Rate>
-        <Votes>{votes} votes</Votes>
-      </Ratings>
     </TileContainer>
   );
 };

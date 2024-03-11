@@ -4,6 +4,7 @@ import { theme } from "./app/theme";
 import { GlobalStyle } from "./app/GlobalStyle";
 import store from "./store";
 import { MovieList } from "./features/movies/MovieList";
+import SiteHeader from "./features/SiteHeader";
 
 function App() {
   return (
