@@ -10,6 +10,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
+        <SiteHeader />
         <GlobalStyle />
         <MovieList />
       </Provider>
