@@ -2,7 +2,7 @@ import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 
-const PeopleList = () => {
+const PeopleList = () => (
   <Container>
     <Section>
       <SectionHeader>
@@ -10,6 +10,6 @@ const PeopleList = () => {
       </SectionHeader>
     </Section>
   </Container>
-};
+);
 
 export default PeopleList;
