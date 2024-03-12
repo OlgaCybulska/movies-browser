@@ -1,7 +1,6 @@
 import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
-import { Tile } from "../../../common/Tile";
 
 const PeopleList = () => {
   <Container>
