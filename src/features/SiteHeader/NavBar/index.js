@@ -1,19 +1,18 @@
-import { Link } from "react-router-dom/cjs/react-router-dom";
-import { StyledList, StyledListItem, StyledNav } from "./styled";
+import { StyledList, StyledListItem, StyledNav, StyledNavLink } from "./styled";
 
 const NavBar = () => (
   <StyledNav>
     <StyledList>
-      <Link to="/movies">
+      <StyledNavLink to="/movies">
         <StyledListItem>
           MOVIES
         </StyledListItem>
-      </Link>
-      <Link to="/people">
+      </StyledNavLink>
+      <StyledNavLink to="/people">
         <StyledListItem>
           PEOPLE
         </StyledListItem>
-      </Link>
+      </StyledNavLink>
     </StyledList>
   </StyledNav>
 );
