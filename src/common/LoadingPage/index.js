@@ -1,11 +1,5 @@
 import { Container } from "../Container";
-import { SectionHeader } from "../SectionHeader";
-import {
-  AnimatedLoader,
-  LoaderContainer,
-  StyledSectionHeader,
-  Wrapper,
-} from "./styled";
+import { AnimatedLoader, LoaderContainer, StyledSectionHeader } from "./styled";
 
 export const LoadingPage = () => {
   return (
