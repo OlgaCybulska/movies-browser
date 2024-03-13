@@ -24,14 +24,11 @@ export const MovieList = () => {
             year="2020"
             rate="7,8"
             votes="35"
+            key="1"
           />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
-          <Tile title="Mulan" year="2020" rate="7,8" votes="35" />
+          <Tile title="Mulan" year="2020" rate="7,8" votes="35" key="2"/>
+          <Tile title="Mulan" year="2020" rate="7,8" votes="35" key="3"/>
+          <Tile title="Mulan" year="2020" rate="7,8" votes="35" key="4"/>
         </GridWrapper>
       </Section>
     </Container>

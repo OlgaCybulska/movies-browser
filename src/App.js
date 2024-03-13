@@ -5,14 +5,29 @@ import { GlobalStyle } from "./app/GlobalStyle";
 import store from "./store";
 import { MovieList } from "./features/movies/MovieList";
 import SiteHeader from "./features/SiteHeader";
+import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom";
+import PeopleList from "./features/people/PeopleList";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <SiteHeader />
         <GlobalStyle />
-        <MovieList />
+        <HashRouter>
+          <SiteHeader />
+          <Switch>
+            <Route path="/people">
+              <PeopleList />
+            </Route>
+            <Route path="/movies">
+              <MovieList />
+            </Route>
+            <Route path="/">
+              <Redirect to="/movies" />
+            </Route>
+          </Switch>
+        </HashRouter>
       </Provider>
     </ThemeProvider>
   );
