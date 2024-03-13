@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const moviesSlice = createSlice({
   name: "movies",
   initialState: {
+    page: 1,
     movies: null,
     status: "initial",
   },
@@ -27,5 +28,7 @@ export const { fetchMovies, fetchMoviesSuccess, fetchMoviesError } =
 const selectMoviesState = (state) => state.movies;
 
 export const selectMovies = (state) => selectMoviesState(state).movies;
+
+export const selectPage = (state) => selectMoviesState(state).page;
 
 export default moviesSlice.reducer;
