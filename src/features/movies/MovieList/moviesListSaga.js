@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
 import {
   fetchMovies,
   fetchMoviesSuccess,
@@ -9,6 +9,7 @@ import { getMovies } from "./getMovies";
 function* fetchMoviesHandler() {
   try {
     const movies = yield call(getMovies);
+    yield delay(1000);
     yield put(fetchMoviesSuccess(movies));
   } catch (error) {
     yield put(fetchMoviesError());
