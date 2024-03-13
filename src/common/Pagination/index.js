@@ -1,3 +1,7 @@
+/*import {
+  useHistory,
+  useLocation,
+} from "react-router-dom/cjs/react-router-dom.min";*/
 import {
   Button,
   TextBold,
@@ -12,6 +16,12 @@ import {
 } from "./styled";
 
 export const Pagination = () => {
+  const location = useLocation();
+  const history = useHistory();
+
+  const searchParams = new URLSearchParams(location.search);
+  const currentPage = searchParams.get(page);
+
   return (
     <Wrapper>
       <Button>
