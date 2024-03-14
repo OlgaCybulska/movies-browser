@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-export const GridWrapper = styled.div`
+export const GridWrapper = styled.ul`
   display: grid;
+  list-style: none;
+  padding: 0;
   grid-gap: 24px;
   grid-template-columns: repeat(4, 1fr);
 
   @media (max-width: ${({ theme }) => theme.breakpoint.laptopMax}px) {
-    grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     padding: 0 16px;
   }
@@ -18,7 +19,6 @@ export const GridWrapper = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.tabletVerticalMax}px) {
-    grid-template-columns: repeat(2, 1fr);
     grid-gap: 18px;
   }
 

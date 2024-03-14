@@ -6,7 +6,6 @@ import {
   StyledSectionHeader,
 } from "./styled";
 import errorIcon from "../../assets/error.png";
-import { SectionHeader } from "../SectionHeader";
 
 export const ErrorPage = () => {
   return (
