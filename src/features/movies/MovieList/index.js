@@ -5,11 +5,10 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
 import { fetchMovies } from "./moviesListSlice";
-import { GridWrapper } from "./styled";
+import { GridWrapper, StyledLink } from "./styled";
 import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
-import { Link } from "react-router-dom/cjs/react-router-dom";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export const MovieList = () => {
             <GridWrapper>
               {popularMovies.map((movie) => (
                 <li key={movie.id}>
-                  <Link to={`/movies/${movie.id}`}>
+                  <StyledLink to={`/movies/${movie.id}`}>
                     <Tile
                       posterPath={movie.poster_path}
                       title={movie.original_title}
@@ -43,7 +42,7 @@ export const MovieList = () => {
                       rate={movie.vote_average.toFixed(1)}
                       votes={movie.vote_count}
                     />
-                  </Link>
+                  </StyledLink>
                 </li>
               ))}
             </GridWrapper>
