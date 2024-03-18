@@ -5,7 +5,7 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
 import { fetchMovies } from "./moviesListSlice";
-import { GridWrapper } from "./styled";
+import { GridWrapper, StyledLink } from "./styled";
 import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
@@ -34,13 +34,15 @@ export const MovieList = () => {
             <GridWrapper>
               {popularMovies.map((movie) => (
                 <li key={movie.id}>
-                  <Tile
-                    posterPath={movie.poster_path}
-                    title={movie.original_title}
-                    year={movie.release_date.slice(0, 4)}
-                    rate={movie.vote_average.toFixed(1)}
-                    votes={movie.vote_count}
-                  />
+                  <StyledLink to={`/movies/${movie.id}`}>
+                    <Tile
+                      posterPath={movie.poster_path}
+                      title={movie.original_title}
+                      year={movie.release_date.slice(0, 4)}
+                      rate={movie.vote_average.toFixed(1)}
+                      votes={movie.vote_count}
+                    />
+                  </StyledLink>
                 </li>
               ))}
             </GridWrapper>

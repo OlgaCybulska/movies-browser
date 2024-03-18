@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom/cjs/react-router-dom";
 import styled from "styled-components";
 
 export const GridWrapper = styled.ul`
@@ -26,4 +27,9 @@ export const GridWrapper = styled.ul`
     grid-template-columns: 1fr;
     grid-gap: 16px;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({theme}) => theme.color.woodSmoke};
 `;
