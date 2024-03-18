@@ -1,19 +1,31 @@
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest, select, all } from "redux-saga/effects";
 import {
   fetchMovies,
   fetchMoviesSuccess,
+  fetchGenresSuccess,
   fetchMoviesError,
+  selectPage,
 } from "./moviesListSlice";
 import { getMovies } from "./getMovies";
+import { getGenres } from "./getGenres";
+import { saveGenresInLocalStorage } from "../../../utils/API/genresLocalStorage";
 
 function* fetchMoviesHandler() {
   try {
-    const movies = yield call(getMovies);
+    const page = yield select(selectPage);
+    const [movies, genres] = yield all([
+      call(getMovies, page),
+      call(getGenres),
+    ]);
     yield delay(1000);
     if (!movies.results) {
       throw new Error();
     }
-    yield put(fetchMoviesSuccess(movies));
+    yield all([
+      call(saveGenresInLocalStorage, genres),
+      put(fetchMoviesSuccess(movies)),
+      put(fetchGenresSuccess(genres)),
+    ]);
   } catch (error) {
     yield put(fetchMoviesError());
   }
