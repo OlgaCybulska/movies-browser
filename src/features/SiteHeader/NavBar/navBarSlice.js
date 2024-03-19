@@ -6,7 +6,7 @@ const navBarSlice = createSlice({
     searchMode: "movies",
   },
   reducers: {
-    setSearchMode: (state, {payload: keyword} ) => {
+    setSearchMode: (state, { payload: keyword }) => {
       state.searchMode = keyword;
     }
   },
