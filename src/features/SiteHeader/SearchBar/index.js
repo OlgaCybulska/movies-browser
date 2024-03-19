@@ -9,17 +9,17 @@ const SearchBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-};
+  };
 
   return (
     <StyledForm onSubmit={handleSubmit}>
       <InputWrapper>
         <StyledSearchIcon />
-        <StyledInput 
+        <StyledInput
           placeholder={`Search for ${searchMode}...`}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          />
+        />
       </InputWrapper>
     </StyledForm>
   );
