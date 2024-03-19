@@ -13,7 +13,7 @@ const navBarSlice = createSlice({
 });
 
 export const { setSearchMode } =
-  moviesSlice.actions;
+  navBarSlice.actions;
 
 const selectNavBarState = (state) => state.navBar;
 
