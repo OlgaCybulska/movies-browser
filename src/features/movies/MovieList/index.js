@@ -9,15 +9,18 @@ import { GridWrapper, StyledLink } from "./styled";
 import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
+import { Pagination } from "../../../common/Pagination";
+import { useLocation } from "react-router-dom";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(selectMovies);
   const status = useSelector(selectStatus);
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchMovies());
-  }, [dispatch]);
+  }, [location]);
 
   switch (status) {
     case "initial":
@@ -46,6 +49,7 @@ export const MovieList = () => {
                 </li>
               ))}
             </GridWrapper>
+            <Pagination />
           </Section>
         </Container>
       );
