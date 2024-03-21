@@ -9,6 +9,7 @@ import { GridWrapper, StyledLink } from "./styled";
 import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
+import { Pagination } from "../../../common/Pagination";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -28,26 +29,29 @@ export const MovieList = () => {
       return <ErrorPage />;
     case "success":
       return (
-        <Container>
-          <Section>
-            <SectionHeader>Popular movies</SectionHeader>
-            <GridWrapper>
-              {popularMovies.map((movie) => (
-                <li key={movie.id}>
-                  <StyledLink to={`/movies/${movie.id}`}>
-                    <Tile
-                      posterPath={movie.poster_path}
-                      title={movie.original_title}
-                      year={movie.release_date.slice(0, 4)}
-                      rate={movie.vote_average.toFixed(1)}
-                      votes={movie.vote_count}
-                    />
-                  </StyledLink>
-                </li>
-              ))}
-            </GridWrapper>
-          </Section>
-        </Container>
+        <>
+          <Container>
+            <Section>
+              <SectionHeader>Popular movies</SectionHeader>
+              <GridWrapper>
+                {popularMovies.map((movie) => (
+                  <li key={movie.id}>
+                    <StyledLink to={`/movies/${movie.id}`}>
+                      <Tile
+                        posterPath={movie.poster_path}
+                        title={movie.original_title}
+                        year={movie.release_date.slice(0, 4)}
+                        rate={movie.vote_average.toFixed(1)}
+                        votes={movie.vote_count}
+                      />
+                    </StyledLink>
+                  </li>
+                ))}
+              </GridWrapper>
+            </Section>
+          </Container>
+          <Pagination />
+        </>
       );
   }
 };
