@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { InputWrapper, StyledForm, StyledInput, StyledSearchIcon } from "./styled";
 import { useSelector } from "react-redux";
-import { selectSearchMode } from "../NavBar/navBarSlice";
+import { selectSearchContent } from "../NavBar/navBarSlice";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const searchMode = useSelector(selectSearchMode);
+  const searchContent = useSelector(selectSearchContent);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ const SearchBar = () => {
       <InputWrapper>
         <StyledSearchIcon />
         <StyledInput
-          placeholder={`Search for ${searchMode}...`}
+          placeholder={`Search for ${searchContent}...`}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
         />

@@ -3,20 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 const navBarSlice = createSlice({
   name: "navBar",
   initialState: {
-    searchMode: "movies",
+    searchContent: "movies",
   },
   reducers: {
-    setSearchMode: (state, { payload: keyword }) => {
-      state.searchMode = keyword;
+    setSearchContent: (state, { payload: keyword }) => {
+      state.searchContent = keyword;
     }
   },
 });
 
-export const { setSearchMode } =
+export const { setSearchContent } =
   navBarSlice.actions;
 
 const selectNavBarState = (state) => state.navBar;
 
-export const selectSearchMode = (state) => selectNavBarState(state).searchMode;
+export const selectSearchContent = (state) => selectNavBarState(state).searchContent;
 
 export default navBarSlice.reducer;
