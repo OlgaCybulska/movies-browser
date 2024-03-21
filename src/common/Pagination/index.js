@@ -1,3 +1,4 @@
+import { maxPageNumber } from "../../utils/maxPageNumber";
 import {
   Button,
   TextBold,
@@ -27,7 +28,7 @@ export const Pagination = () => {
         <TextNormal>Page</TextNormal>
         <TextBold>1</TextBold>
         <TextNormal>of</TextNormal>
-        <TextBold>500</TextBold>
+        <TextBold>{maxPageNumber}</TextBold>
       </TextContainer>
       <Button>
         <ButtonText>Next</ButtonText>

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { maxPageNumber } from "../../utils/maxPageNumber";
 
 const paginationSlice = createSlice({
   name: "pagination",
@@ -7,16 +8,20 @@ const paginationSlice = createSlice({
   },
   reducers: {
     setNextPage: ({ page }) => {
-      page++;
+      if (page < maxPageNumber) {
+        page++;
+      }
     },
     setPreviousPage: ({ page }) => {
-      page--;
+      if (page > 1) {
+        page--;
+      }
     },
     setFirstPage: ({ page }) => {
       page = 1;
     },
     setLastPage: ({ page }) => {
-      page = 500;
+      page = maxPageNumber;
     },
   },
 });
