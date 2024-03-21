@@ -7,9 +7,9 @@ const paginationSlice = createSlice({
     page: 1,
   },
   reducers: {
-    setPage: (state, {payload: pageNumber}) => {
+    setPage: (state, { payload: pageNumber }) => {
       if (state.page >= 1 && state.page <= maxPageNumber) {
-        state.page = pageNumber
+        state.page = pageNumber;
       }
     },
   }
