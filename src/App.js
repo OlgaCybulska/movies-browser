@@ -4,7 +4,6 @@ import { theme } from "./app/theme";
 import { GlobalStyle } from "./app/GlobalStyle";
 import store from "./store";
 import { MovieList } from "./features/movies/MovieList";
-import { Pagination } from "./common/Pagination";
 import SiteHeader from "./features/SiteHeader";
 import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom";
