@@ -20,7 +20,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 8px, 16px;
+  padding: 8px 16px;
   border-radius: 5px;
   gap: 8px;
   border: none;
