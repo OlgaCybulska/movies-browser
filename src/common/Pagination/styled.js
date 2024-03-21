@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as VectorIcon } from "./vector.svg";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.footer`
   margin-top: 56px;
   display: flex;
   justify-content: center;
