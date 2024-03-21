@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ReactComponent as VectorIcon } from "./vector.svg";
 
 export const Wrapper = styled.footer`
@@ -70,42 +70,58 @@ export const TextNormal = styled.span`
 export const Vector = styled(VectorIcon)`
   width: 7px;
   height: 11px;
+  fill: ${({ theme }) => theme.color.scienceBlue};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     width: 5px;
     height: 8px;
   }
+
+  ${({ $disabled }) => $disabled && css`
+    fill: ${({ theme }) => theme.color.waterloo};
+  `}
 `;
 
 export const VectorMobile = styled(VectorIcon)`
   width: 5px;
   height: 8px;
+  fill: ${({ theme }) => theme.color.scienceBlue};
 
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     display: none;
   }
+
+  ${({ $disabled }) => $disabled && css`
+    fill: ${({ theme }) => theme.color.waterloo};
+  `}
 `;
 export const VectorLeft = styled(VectorIcon)`
   width: 7px;
   height: 11px;
   transform: rotate(180deg);
+  fill: ${({ theme }) => theme.color.scienceBlue};
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     width: 5px;
     height: 8px;
   }
 
-  &:disabled {
-    color: ${({ theme }) => theme.color.waterloo};
-  }
+  ${({ $disabled }) => $disabled && css`
+    fill: ${({ theme }) => theme.color.waterloo};
+  `}
 `;
 
 export const VectorMobileLeft = styled(VectorIcon)`
   width: 5px;
   height: 8px;
   transform: rotate(180deg);
+  fill: ${({ theme }) => theme.color.scienceBlue};
 
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     display: none;
   }
+
+  ${({ $disabled }) => $disabled && css`
+    fill: ${({ theme }) => theme.color.waterloo};
+  `}
 `;
