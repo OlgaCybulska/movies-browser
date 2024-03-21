@@ -21,7 +21,6 @@ export const Pagination = () => {
       </Button>
       <Button>
         <VectorLeft />
-
         <ButtonText>Previous</ButtonText>
       </Button>
       <TextContainer>

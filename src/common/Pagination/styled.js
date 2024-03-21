@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Button = styled.button`
+  font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -27,7 +28,7 @@ export const Button = styled.button`
     gap: 4px;
   }
 
-  &: disabled {
+  &:disabled {
     cursor: auto;
     background-color: ${({ theme }) => theme.color.mystic};
   }
@@ -83,7 +84,7 @@ export const VectorLeft = styled(VectorIcon)`
     scale: 1;
   }
 
-  &: disabled {
+  &:disabled {
     color: ${({ theme }) => theme.color.waterloo};
   }
 `;
