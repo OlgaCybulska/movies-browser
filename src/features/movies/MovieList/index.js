@@ -11,16 +11,18 @@ import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
 import { useListDataURL } from "../../../utils/API/useListDataURL";
+import { selectPage } from "../../../common/Pagination/paginationSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(selectMovies);
   const status = useSelector(selectStatus);
   const listDataURL = useListDataURL()
+  const page = useSelector(selectPage);
 
   useEffect(() => {
     dispatch(fetchMovies(listDataURL));
-  }, [dispatch]);
+  }, [page]);
 
   switch (status) {
     case "initial":
