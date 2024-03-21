@@ -7,30 +7,16 @@ const paginationSlice = createSlice({
     page: 1,
   },
   reducers: {
-    setNextPage: (state) => {
-      if (state.page < maxPageNumber) {
-        state.page++;
+    setPage: (state, {payload: pageNumber}) => {
+      if (state.page > 1 && state.page < maxPageNumber) {
+        state.page = pageNumber
       }
     },
-    setPreviousPage: (state) => {
-      if (state.page > 1) {
-        state.page--;
-      }
-    },
-    setFirstPage: (state) => {
-      state.page = 1;
-    },
-    setLastPage: (state) => {
-      state.page = maxPageNumber;
-    },
-  },
+  }
 });
 
 export const {
-  setNextPage,
-  setPreviousPage,
-  setFirstPage,
-  setLastPage,
+  setPage,
 } = paginationSlice.actions;
 
 const selectPaginationState = (state) => state.pagination;
