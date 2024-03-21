@@ -9,6 +9,7 @@ import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom";
 import PeopleList from "./features/people/PeopleList";
 import MovieDetails from "./features/movies/MovieDetails";
+import { Pagination } from "./common/Pagination";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             </Route>
           </Switch>
         </HashRouter>
+        <Pagination />
       </Provider>
     </ThemeProvider>
   );
