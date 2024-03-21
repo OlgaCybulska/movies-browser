@@ -47,20 +47,23 @@ export const ButtonText = styled.span`
 `;
 
 export const TextContainer = styled.div`
+  size: 16px;
+  line-height: 24px;
+  align-self: center;
   display: flex;
   gap: 8px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+    font-size: 10px;
+  }
 `;
 
 export const TextBold = styled.span`
-  size: 16px;
-  line-height: 24px;
   font-weight: 600;
   color: ${({ theme }) => theme.color.woodSmoke};
 `;
 
 export const TextNormal = styled.span`
-  size: 16px;
-  line-height: 24px;
   color: ${({ theme }) => theme.color.waterloo};
 `;
 
