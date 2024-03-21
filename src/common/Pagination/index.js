@@ -12,7 +12,7 @@ import {
   VectorMobileLeft,
   VectorMobile,
 } from "./styled";
-import { selectPage, setFirstPage, setLastPage, setNextPage, setPreviousPage } from "./paginationSlice";
+import { selectPage, setPage } from "./paginationSlice";
 
 export const Pagination = () => {
   const page = useSelector(selectPage);
@@ -22,7 +22,7 @@ export const Pagination = () => {
     <Wrapper>
       <Button
         disabled={page === 1}
-        onClick={() => { dispatch(setFirstPage()) }}
+        onClick={() => { dispatch(setPage(1)) }}
       >
         <VectorLeft $disabled={page === 1} />
         <VectorMobileLeft $disabled={page === 1} />
@@ -30,7 +30,7 @@ export const Pagination = () => {
       </Button>
       <Button
         disabled={page === 1}
-        onClick={() => { dispatch(setPreviousPage()) }}
+        onClick={() => { dispatch(setPage(page - 1)) }}
       >
         <VectorLeft $disabled={page === 1} />
         <ButtonText>Previous</ButtonText>
@@ -43,14 +43,14 @@ export const Pagination = () => {
       </TextContainer>
       <Button
         disabled={page === maxPageNumber}
-        onClick={() => { dispatch(setNextPage()) }}
+        onClick={() => { dispatch(setPage(page + 1)) }}
       >
         <ButtonText>Next</ButtonText>
         <Vector $disabled={page === maxPageNumber} />
       </Button>
       <Button
         disabled={page === maxPageNumber}
-        onClick={() => { dispatch(setLastPage()) }}
+        onClick={() => { dispatch(setPage(maxPageNumber)) }}
       >
         <ButtonText>Last</ButtonText>
         <VectorMobile $disabled={page === maxPageNumber} />
