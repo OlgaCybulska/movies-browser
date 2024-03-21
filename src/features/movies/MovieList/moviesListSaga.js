@@ -5,16 +5,18 @@ import {
   fetchMoviesError,
 } from "./moviesListSlice";
 import { getMovies } from "./getMovies";
+import { getData } from "../../../utils/API/getData";
 
-function* fetchMoviesHandler() {
+function* fetchMoviesHandler(action) {
   try {
-    const movies = yield call(getMovies);
+    const movies = yield call(getData, action.payload);
     yield delay(1000);
     if (!movies.results) {
       throw new Error();
     }
     yield put(fetchMoviesSuccess(movies));
   } catch (error) {
+    console.log(error);
     yield put(fetchMoviesError());
   }
 }
