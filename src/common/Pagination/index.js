@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { maxPageNumber } from "../../utils/maxPageNumber";
 import {
   Button,
@@ -11,30 +12,34 @@ import {
   VectorMobileLeft,
   VectorMobile,
 } from "./styled";
+import { selectPage, setFirstPage, setLastPage, setNextPage, setPreviousPage } from "./paginationSlice";
 
 export const Pagination = () => {
+  const page = useSelector(selectPage);
+  const dispatch = useDispatch();
+
   return (
     <Wrapper>
-      <Button>
+      <Button onClick={() => { dispatch(setFirstPage()) }}>
         <VectorLeft />
         <VectorMobileLeft />
         <ButtonText>First</ButtonText>
       </Button>
-      <Button>
+      <Button onClick={() => { dispatch(setPreviousPage()) }}>
         <VectorLeft />
         <ButtonText>Previous</ButtonText>
       </Button>
       <TextContainer>
         <TextNormal>Page</TextNormal>
-        <TextBold>1</TextBold>
+        <TextBold>{page}</TextBold>
         <TextNormal>of</TextNormal>
         <TextBold>{maxPageNumber}</TextBold>
       </TextContainer>
-      <Button>
+      <Button onClick={() => { dispatch(setNextPage()) }}>
         <ButtonText>Next</ButtonText>
         <Vector />
       </Button>
-      <Button>
+      <Button onClick={() => { dispatch(setLastPage()) }}>
         <ButtonText>Last</ButtonText>
         <VectorMobile />
         <Vector />
