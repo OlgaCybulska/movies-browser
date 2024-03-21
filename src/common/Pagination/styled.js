@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { ReactComponent as VectorIcon } from "./vector.svg";
 
 export const Wrapper = styled.footer`
-  margin-top: 56px;
+  margin-top: 40px;
+  margin-bottom: 103px;
   display: flex;
   justify-content: center;
   gap: 12px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+    margin-top: 32px;
+    margin-bottom: 31px;
     gap: 8px;
   }
 `;
