@@ -8,6 +8,16 @@ export const useListDataURL = () => {
 
   const searchContent = useSelector(selectSearchContent);
   const page = useSelector(selectPage);
+  let apiSearchContent;
 
-  return `https://api.themoviedb.org/3/${searchContent}/popular?api_key=${apiKey}&language=${language}&page=${page}`;
+  switch(searchContent) {
+    case "movies":
+      apiSearchContent = "movie";
+      break;
+    case "people":
+      apiSearchContent = "person";
+      break;
+  }
+
+  return `https://api.themoviedb.org/3/${apiSearchContent}/popular?api_key=${apiKey}&language=${language}&page=${page}`;
 }
