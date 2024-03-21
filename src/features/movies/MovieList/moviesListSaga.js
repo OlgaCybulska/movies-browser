@@ -4,7 +4,6 @@ import {
   fetchMoviesSuccess,
   fetchMoviesError,
 } from "./moviesListSlice";
-import { getMovies } from "./getMovies";
 import { getData } from "../../../utils/API/getData";
 
 function* fetchMoviesHandler(action) {
