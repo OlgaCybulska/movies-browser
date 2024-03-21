@@ -15,5 +15,8 @@ export const theme = {
   },
   breakpoint: {
     mobileMax: 767,
+    tabletVerticalMax: 991,
+    tabletHorizontalMax: 1199,
+    laptopMax: 1400,
   },
 };

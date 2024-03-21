@@ -5,14 +5,34 @@ import { GlobalStyle } from "./app/GlobalStyle";
 import store from "./store";
 import { MovieList } from "./features/movies/MovieList";
 import { Pagination } from "./common/Pagination";
+import SiteHeader from "./features/SiteHeader";
+import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom";
+import PeopleList from "./features/people/PeopleList";
+import MovieDetails from "./features/movies/MovieDetails";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <GlobalStyle />
-        <MovieList />
-        <Pagination />
+        <HashRouter>
+          <SiteHeader />
+          <Switch>
+            <Route path="/movies/:id">
+              <MovieDetails />
+            </Route>
+            <Route path="/people">
+              <PeopleList />
+            </Route>
+            <Route path="/movies">
+              <MovieList />
+            </Route>
+            <Route path="/">
+              <Redirect to="/movies" />
+            </Route>
+          </Switch>
+        </HashRouter>
       </Provider>
     </ThemeProvider>
   );
