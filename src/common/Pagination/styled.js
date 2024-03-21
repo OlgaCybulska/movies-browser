@@ -33,7 +33,7 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.color.mystic};
   }
 `;
-export const ButtonText = styled.p`
+export const ButtonText = styled.span`
   size: 14px;
   line-height: 19.6px;
   color: ${({ theme }) => theme.color.darkGray};
@@ -48,14 +48,14 @@ export const TextContainer = styled.div`
   gap: 8px;
 `;
 
-export const TextBold = styled.p`
+export const TextBold = styled.span`
   size: 16px;
   line-height: 24px;
   font-weight: 600;
   color: ${({ theme }) => theme.color.woodSmoke};
 `;
 
-export const TextNormal = styled.p`
+export const TextNormal = styled.span`
   size: 16px;
   line-height: 24px;
   color: ${({ theme }) => theme.color.waterloo};
