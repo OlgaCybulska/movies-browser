@@ -20,13 +20,19 @@ export const Pagination = () => {
 
   return (
     <Wrapper>
-      <Button onClick={() => { dispatch(setFirstPage()) }}>
-        <VectorLeft />
-        <VectorMobileLeft />
+      <Button
+        disabled={page === 1}
+        onClick={() => { dispatch(setFirstPage()) }}
+      >
+        <VectorLeft $disabled={page === 1} />
+        <VectorMobileLeft $disabled={page === 1} />
         <ButtonText>First</ButtonText>
       </Button>
-      <Button onClick={() => { dispatch(setPreviousPage()) }}>
-        <VectorLeft />
+      <Button
+        disabled={page === 1}
+        onClick={() => { dispatch(setPreviousPage()) }}
+      >
+        <VectorLeft $disabled={page === 1} />
         <ButtonText>Previous</ButtonText>
       </Button>
       <TextContainer>
@@ -35,14 +41,20 @@ export const Pagination = () => {
         <TextNormal>of</TextNormal>
         <TextBold>{maxPageNumber}</TextBold>
       </TextContainer>
-      <Button onClick={() => { dispatch(setNextPage()) }}>
+      <Button
+        disabled={page === maxPageNumber}
+        onClick={() => { dispatch(setNextPage()) }}
+      >
         <ButtonText>Next</ButtonText>
-        <Vector />
+        <Vector $disabled={page === maxPageNumber} />
       </Button>
-      <Button onClick={() => { dispatch(setLastPage()) }}>
+      <Button
+        disabled={page === maxPageNumber}
+        onClick={() => { dispatch(setLastPage()) }}
+      >
         <ButtonText>Last</ButtonText>
-        <VectorMobile />
-        <Vector />
+        <VectorMobile $disabled={page === maxPageNumber} />
+        <Vector $disabled={page === maxPageNumber} />
       </Button>
     </Wrapper>
   );
