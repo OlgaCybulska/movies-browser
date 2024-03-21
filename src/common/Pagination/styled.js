@@ -68,26 +68,31 @@ export const TextNormal = styled.span`
 `;
 
 export const Vector = styled(VectorIcon)`
-  scale: 1.4;
+  width: 7px;
+  height: 11px;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
-    scale: 1;
+    width: 5px;
+    height: 8px;
   }
 `;
 
 export const VectorMobile = styled(VectorIcon)`
-  scale: 1;
+  width: 5px;
+  height: 8px;
 
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     display: none;
   }
 `;
 export const VectorLeft = styled(VectorIcon)`
-  scale: 1.4;
+  width: 7px;
+  height: 11px;
   transform: rotate(180deg);
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
-    scale: 1;
+    width: 5px;
+    height: 8px;
   }
 
   &:disabled {
@@ -96,7 +101,8 @@ export const VectorLeft = styled(VectorIcon)`
 `;
 
 export const VectorMobileLeft = styled(VectorIcon)`
-  scale: 1;
+  width: 5px;
+  height: 8px;
   transform: rotate(180deg);
 
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
