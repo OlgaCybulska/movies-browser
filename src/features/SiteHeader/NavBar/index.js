@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { StyledList, StyledListItem, StyledNav, StyledNavLink } from "./styled";
 import { useDispatch } from "react-redux";
-import { setSearchMode } from "./navBarSlice";
+import { setSearchContent } from "./navBarSlice";
 
 const NavBar = () => {
   const location = useLocation();
@@ -9,7 +9,7 @@ const NavBar = () => {
 
   const searchKeyword = location.pathname.split("/")[1];
 
-  dispatch(setSearchMode(searchKeyword));
+  dispatch(setSearchContent(searchKeyword));
 
   return (
     <StyledNav>
