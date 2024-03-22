@@ -10,20 +10,16 @@ import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { fetchData, selectDataList, selectStatus } from "../../../utils/API/dataSlice";
-import { selectPage } from "../../../common/Pagination/paginationSlice";
-import { selectSearchContent } from "../../SiteHeader/NavBar/navBarSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
 
   const status = useSelector(selectStatus);
-  const searchContent = useSelector(selectSearchContent);
-  const page = useSelector(selectPage);
-  const dataURL = useDataURL(searchContent, page);
+  const dataURL = useDataURL();
 
   useEffect(() => {
     dispatch(fetchData(dataURL));
-  }, [dataURL, page, searchContent, dispatch]);
+  }, [dataURL, dispatch]);
 
   const popularMovies = useSelector(selectDataList);
 
