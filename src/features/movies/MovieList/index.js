@@ -4,24 +4,23 @@ import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
-import { fetchMovies } from "./moviesListSlice";
 import { GridWrapper, StyledLink } from "./styled";
-import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { selectPage } from "../../../common/Pagination/paginationSlice";
+import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-  const popularMovies = useSelector(selectMovies);
+  const popularMovies = useSelector(selectData);
   const status = useSelector(selectStatus);
   const listDataURL = useDataURL()
   const page = useSelector(selectPage);
 
   useEffect(() => {
-    dispatch(fetchMovies(listDataURL));
+    dispatch(fetchData(listDataURL));
   }, [page]);
 
   switch (status) {
