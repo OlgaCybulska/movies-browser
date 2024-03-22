@@ -10,14 +10,14 @@ import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
-import { useListDataURL } from "../../../utils/API/useListDataURL";
+import { useDataURL } from "../../../utils/API/useDataURL";
 import { selectPage } from "../../../common/Pagination/paginationSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(selectMovies);
   const status = useSelector(selectStatus);
-  const listDataURL = useListDataURL()
+  const listDataURL = useDataURL()
   const page = useSelector(selectPage);
 
   useEffect(() => {
