@@ -8,13 +8,14 @@ export const useDataURL = () => {
 
   const apiKey = "741487ab9378f09398cb15784041196d"
   const language = "en-US"
+
   const searchContent = useSelector(selectSearchContent);
   const page = useSelector(selectPage);
   const itemId = location.pathname.split("/")[2];
 
   let apiSearchContent;
 
-  switch(searchContent) {
+  switch (searchContent) {
     case "movies":
       apiSearchContent = "movie";
       break;
@@ -23,5 +24,10 @@ export const useDataURL = () => {
       break;
   }
 
-  return `https://api.themoviedb.org/3/${apiSearchContent}/${itemId ? itemId : "popular"}?api_key=${apiKey}&language=${language}&page=${page}`;
+  return `https://api.themoviedb.org/3
+    /${apiSearchContent}/${itemId ? itemId : "popular"}
+    ?api_key=${apiKey}
+    &language=${language}
+    &page=${page}
+  `;
 }
