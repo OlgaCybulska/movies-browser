@@ -41,7 +41,7 @@ const PeopleList = () => {
               <SectionHeader>
                 Popular people
               </SectionHeader>
-              {popularActors.map((actor) => (
+              {popularActors[0].gender && popularActors.map((actor) => (
                 <li key={actor.id}>
                   <Link to={`/people/${actor.id}`}>
                     {actor.name}
