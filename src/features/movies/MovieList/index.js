@@ -6,7 +6,7 @@ import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
 import { fetchMovies } from "./moviesListSlice";
 import { GridWrapper, StyledLink } from "./styled";
-import { selectMovies, selectStatus } from "./moviesListSlice";
+import { selectMovies, selectGenres, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
@@ -15,6 +15,7 @@ export const MovieList = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(selectMovies);
   const status = useSelector(selectStatus);
+  const genres = useSelector(selectGenres);
 
   useEffect(() => {
     dispatch(fetchMovies());
@@ -40,6 +41,10 @@ export const MovieList = () => {
                       <Tile
                         posterPath={movie.poster_path}
                         title={movie.original_title}
+                        genres={movie.genre_ids.map(
+                          (id) =>
+                            genres.genres.find((genre) => genre.id === id).name
+                        )}
                         year={movie.release_date.slice(0, 4)}
                         rate={movie.vote_average.toFixed(1)}
                         votes={movie.vote_count}
