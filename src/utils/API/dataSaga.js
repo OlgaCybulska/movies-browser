@@ -1,5 +1,5 @@
 import { call, delay, put, takeLatest } from "redux-saga/effects";
-import { getData } from "../../../utils/API/getData";
+import { getData } from "./getData";
 import {
   fetchData,
   fetchDataSuccess,
@@ -13,7 +13,7 @@ function* fetchDataHandler(action) {
     if (apiData.success === false) {
       throw new Error();
     }
-    yield put(fetchDataSuccess(movies));
+    yield put(fetchDataSuccess(apiData));
   } catch (error) {
     console.log(error);
     yield put(fetchDataError());
