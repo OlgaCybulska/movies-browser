@@ -9,15 +9,20 @@ import { Pagination } from "../../../common/Pagination";
 import { fetchData, selectDataList, selectStatus } from "../../../utils/API/dataSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
+import { selectPage } from "../../../common/Pagination/paginationSlice";
+import { selectSearchContent } from "../../SiteHeader/NavBar/navBarSlice";
 
 const PeopleList = () => {
   const dispatch = useDispatch();
-  const dataURL = useDataURL();
-  const status = useSelector(selectStatus);
 
+  const searchContent = useSelector(selectSearchContent);
+  const page = useSelector(selectPage);
+  const dataURL = useDataURL(searchContent, page);
+  const status = useSelector(selectStatus);
+  
   useEffect(() => {
-    dispatch(fetchData(dataURL));
-  }, [dataURL]);
+      dispatch(fetchData(dataURL));
+  }, [dataURL, searchContent, page, dispatch]);
 
   const popularActors = useSelector(selectDataList);
 
