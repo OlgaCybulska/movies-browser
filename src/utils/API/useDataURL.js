@@ -25,10 +25,19 @@ export const useDataURL = () => {
       break;
   }
 
-  return `https://api.themoviedb.org/3${query ? "/search" : ""
-    }/${apiSearchContent
-    }/${itemId ? itemId : "popular"
-    }?api_key=${apiKey
+  if (!query) {
+    return `https://api.themoviedb.org/3/${apiSearchContent
+      }/${itemId ? itemId : "popular"
+      }?api_key=${apiKey
+      }&language=${language
+      }&page=${page}`;
+  }
+
+  return `https://api.themoviedb.org/3/search/${apiSearchContent
+    }?query=${query
+    }&api_key=${apiKey
+    }&include_adult=${true
     }&language=${language
-    }&page=${page}`;
+    }&page=${page
+    }`;
 }
