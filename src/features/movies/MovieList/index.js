@@ -16,11 +16,11 @@ export const MovieList = () => {
   const dispatch = useDispatch();
   const popularMovies = useSelector(selectData);
   const status = useSelector(selectStatus);
-  const listDataURL = useDataURL()
+  const dataURL = useDataURL()
   const page = useSelector(selectPage);
 
   useEffect(() => {
-    dispatch(fetchData(listDataURL));
+    dispatch(fetchData(dataURL));
   }, [page]);
 
   switch (status) {
