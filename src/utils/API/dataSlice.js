@@ -10,7 +10,6 @@ const dataSlice = createSlice({
     fetchData: (state) => {
       state.status = "loading";
     },
-
     fetchDataSuccess: (state, { payload: apiData }) => {
       state.apiData = apiData;
       state.status = "success";
