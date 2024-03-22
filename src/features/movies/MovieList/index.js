@@ -27,6 +27,8 @@ export const MovieList = () => {
 
   const popularMovies = useSelector(selectDataList);
 
+  console.log(popularMovies)
+
   switch (status) {
     case "initial":
       return null;
@@ -41,7 +43,7 @@ export const MovieList = () => {
             <Section>
               <SectionHeader>Popular movies</SectionHeader>
               <GridWrapper>
-                {popularMovies.map((movie) => (
+                {popularMovies[0].title && popularMovies.map((movie) => (
                   <li key={movie.id}>
                     <StyledLink to={`/movies/${movie.id}`}>
                       <Tile
