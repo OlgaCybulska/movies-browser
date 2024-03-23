@@ -6,7 +6,7 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { Pagination } from "../../../common/Pagination";
-import { fetchData, selectDataList, selectStatus } from "../../../utils/API/dataSlice";
+import { fetchData, selectDataDetails, selectStatus } from "../../../utils/API/dataSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 
@@ -20,7 +20,7 @@ const PeopleList = () => {
       dispatch(fetchData(dataURL));
   }, [dataURL, dispatch]);
 
-  const popularActors = useSelector(selectDataList);
+  const popularActors = useSelector(selectDataDetails);
 
   switch (status) {
     case "initial":
@@ -37,13 +37,13 @@ const PeopleList = () => {
               <SectionHeader>
                 Popular people
               </SectionHeader>
-              {popularActors[0].gender && popularActors.map((actor) => (
+              {popularActors.results ? popularActors.results[0].gender && popularActors.results.map((actor) => (
                 <li key={actor.id}>
                   <Link to={`/people/${actor.id}`}>
                     {actor.name}
                   </Link>
                 </li>
-              ))}
+              )) : null}
             </Section>
           </Container>
           <Pagination />
