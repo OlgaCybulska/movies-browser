@@ -9,7 +9,7 @@ import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
 import { useDataURL } from "../../../utils/API/useDataURL";
-import { fetchData, selectDataList, selectStatus } from "../../../utils/API/dataSlice";
+import { fetchData, selectDataDetails, selectDataList, selectStatus } from "../../../utils/API/dataSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -21,9 +21,7 @@ export const MovieList = () => {
     dispatch(fetchData(dataURL));
   }, [dataURL, dispatch]);
 
-  const popularMovies = useSelector(selectDataList);
-
-  console.log(popularMovies)
+  const popularMovies = useSelector(selectDataDetails);
 
   switch (status) {
     case "initial":
@@ -39,7 +37,7 @@ export const MovieList = () => {
             <Section>
               <SectionHeader>Popular movies</SectionHeader>
               <GridWrapper>
-                {popularMovies[0].title && popularMovies.map((movie) => (
+                {popularMovies.results ? popularMovies.results[0].title && popularMovies.results.map((movie) => (
                   <li key={movie.id}>
                     <StyledLink to={`/movies/${movie.id}`}>
                       <Tile
@@ -51,7 +49,7 @@ export const MovieList = () => {
                       />
                     </StyledLink>
                   </li>
-                ))}
+                )) : null}
               </GridWrapper>
             </Section>
           </Container>
