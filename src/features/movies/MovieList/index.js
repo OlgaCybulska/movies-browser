@@ -9,7 +9,7 @@ import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
 import { useDataURL } from "../../../utils/API/useDataURL";
-import { fetchData, selectDataDetails, selectDataList, selectStatus } from "../../../utils/API/dataSlice";
+import { fetchData, selectDataDetails, selectStatus } from "../../../utils/API/dataSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
