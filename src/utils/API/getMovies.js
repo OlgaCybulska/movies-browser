@@ -1,4 +1,4 @@
-import { getMoviesURL } from "../../../utils/API/getMoviesURL";
+import { getMoviesURL } from "./getMoviesURL";
 
 export const getMovies = async () => {
   const response = await fetch(getMoviesURL);
