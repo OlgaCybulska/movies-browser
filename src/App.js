@@ -18,7 +18,8 @@ function App() {
         <HashRouter>
           <SiteHeader />
           <Switch>
-            <Route path="/movies/:id">
+            {/* <Route path="/movies/:id"> // This line should be used when we get movie details data from API */}
+            <Route path="/movies/movie-details-static">
               <MovieDetails />
             </Route>
             <Route path="/people">
