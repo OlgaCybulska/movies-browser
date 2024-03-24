@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { SectionHeader } from "../SectionHeader";
-import { ReactComponent as LoadingIcon } from "../../assets/icon-spinner.svg";
+import { ReactComponent as LoadingIcon } from "../../assets/icons/icon-spinner.svg";
 
 export const LoaderContainer = styled.div`
   display: flex;
