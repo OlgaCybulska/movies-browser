@@ -5,10 +5,11 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
 import { fetchMovies } from "./moviesListSlice";
-import { GridWrapper, StyledLink } from "./styled";
+import { StyledLink } from "./styled";
+import { GridWrapper } from "../../../common/Tile/styled";
 import { selectMovies, selectStatus } from "./moviesListSlice";
-import { LoadingPage } from "../../../common/LoadingPage";
-import { ErrorPage } from "../../../common/ErrorPage";
+import LoadingPage from "../../../common/LoadingPage";
+import ErrorPage from "../../../common/ErrorPage";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -34,11 +35,12 @@ export const MovieList = () => {
             <GridWrapper>
               {popularMovies.map((movie) => (
                 <li key={movie.id}>
-                  <StyledLink to={`/movies/${movie.id}`}>
+                  {/* <StyledLink to={`/movies/${movie.id}`}> // This line should be used after we get movie details data from API */}
+                  <StyledLink to="/movies/movie-details-static">
                     <Tile
                       posterPath={movie.poster_path}
                       title={movie.original_title}
-                      year={movie.release_date.slice(0, 4)}
+                      subtitle={movie.release_date.slice(0, 4)}
                       rate={movie.vote_average.toFixed(1)}
                       votes={movie.vote_count}
                     />
