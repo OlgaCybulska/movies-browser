@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as SearchIcon } from '../../../assets/search-icon.svg';
+import { ReactComponent as SearchIcon } from "../../../assets/icons/search-icon.svg";
 
 export const StyledForm = styled.form`
   align-self: center;
@@ -12,7 +12,7 @@ export const StyledForm = styled.form`
 `;
 
 export const StyledInput = styled.input`
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   display: inline-block;
   padding: 12px 24px 12px 64px;
