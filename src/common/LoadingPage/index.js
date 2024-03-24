@@ -2,7 +2,7 @@ import { Container } from "../Container";
 import { Section } from "../Section";
 import { AnimatedLoader, LoaderContainer, StyledSectionHeader } from "./styled";
 
-export const LoadingPage = () => {
+const LoadingPage = () => {
   return (
     <Container>
       <Section>
@@ -15,3 +15,5 @@ export const LoadingPage = () => {
     </Container>
   );
 };
+
+export default LoadingPage;
