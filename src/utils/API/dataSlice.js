@@ -18,10 +18,13 @@ const dataSlice = createSlice({
     fetchDataError: (state) => {
       state.status = "error";
     },
+    fetchAdditionalData: (state, {payload: apiData}) => {
+      state.additionalApiData = apiData;
+    },
   },
 });
 
-export const { fetchData, fetchDataSuccess, fetchDataError } =
+export const { fetchData, fetchDataSuccess, fetchDataError, fetchAdditionalData } =
   dataSlice.actions;
 
 const selectDataState = (state) => state.data;
