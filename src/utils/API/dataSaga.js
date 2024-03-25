@@ -1,9 +1,10 @@
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest, all } from "redux-saga/effects";
 import { getData } from "./getData";
 import {
   fetchData,
   fetchDataSuccess,
   fetchDataError,
+  fetchAdditionalData,
 } from "./dataSlice";
 
 function* fetchDataHandler(action) {
@@ -20,6 +21,21 @@ function* fetchDataHandler(action) {
   }
 }
 
+function* fetchAdditionalDataHandler(action) {
+  try {
+    const apiData = yield call(getData, action.payload);
+    if (apiData.success === false) {
+      throw new Error();
+    }
+    yield put(fetchAdditionalData(apiData));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* dataSaga() {
-  yield takeLatest(fetchData.type, fetchDataHandler);
+  yield all([
+    takeLatest(fetchData.type, fetchDataHandler),
+    takeLatest(fetchAdditionalData.type, fetchAdditionalDataHandler)
+  ])
 }
