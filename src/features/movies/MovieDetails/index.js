@@ -3,15 +3,19 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { useEffect } from "react";
-import { fetchData, selectData } from "../../../utils/API/dataSlice";
+import { fetchAdditionalData, fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
   const dataURL = useDataURL();
+  const status = useSelector(selectStatus);
+  const additionalDataURL = useAdditionalDataURL();
 
   useEffect(() => {
     dispatch(fetchData(dataURL));
-  }, [dispatch, dataURL]);
+    dispatch(fetchAdditionalData(additionalDataURL));
+  }, [dispatch, dataURL, additionalDataURL]);
 
   const movieDetails = useSelector(selectData);
 
