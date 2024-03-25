@@ -9,7 +9,7 @@ import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
 import { useDataURL } from "../../../utils/API/useDataURL";
-import { fetchData, selectDataDetails, selectStatus } from "../../../utils/API/dataSlice";
+import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const MovieList = () => {
     dispatch(fetchData(dataURL));
   }, [dataURL, dispatch]);
 
-  const popularMovies = useSelector(selectDataDetails);
+  const popularMovies = useSelector(selectData);
 
   switch (status) {
     case "initial":

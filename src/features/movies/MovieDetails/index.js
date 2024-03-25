@@ -3,7 +3,7 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { useEffect } from "react";
-import { fetchData, selectDataDetails } from "../../../utils/API/dataSlice";
+import { fetchData, selectData } from "../../../utils/API/dataSlice";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const MovieDetails = () => {
     dispatch(fetchData(dataURL));
   }, [dispatch, dataURL]);
 
-  const movieDetails = useSelector(selectDataDetails);
+  const movieDetails = useSelector(selectData);
 
   return (
     <Section>

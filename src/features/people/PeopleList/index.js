@@ -6,7 +6,7 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { Pagination } from "../../../common/Pagination";
-import { fetchData, selectDataDetails, selectStatus } from "../../../utils/API/dataSlice";
+import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 
@@ -20,7 +20,7 @@ const PeopleList = () => {
       dispatch(fetchData(dataURL));
   }, [dataURL, dispatch]);
 
-  const popularActors = useSelector(selectDataDetails);
+  const popularActors = useSelector(selectData);
 
   switch (status) {
     case "initial":

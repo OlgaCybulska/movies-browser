@@ -29,8 +29,7 @@ export const { fetchData, fetchDataSuccess, fetchDataError, fetchAdditionalData 
 
 const selectDataState = (state) => state.data;
 
-export const selectDataList = (state) => selectDataState(state).apiData.results;
-export const selectDataDetails = (state) => selectDataState(state).apiData;
+export const selectData = (state) => selectDataState(state).apiData;
 export const selectStatus = (state) => selectDataState(state).status;
 
 export default dataSlice.reducer;
