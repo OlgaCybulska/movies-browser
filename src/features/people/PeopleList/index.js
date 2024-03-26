@@ -7,8 +7,8 @@ import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { Pagination } from "../../../common/Pagination";
 import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
-import { LoadingPage } from "../../../common/LoadingPage";
-import { ErrorPage } from "../../../common/ErrorPage";
+import LoadingPage from "../../../common/LoadingPage";
+import ErrorPage from "../../../common/ErrorPage";
 
 const PeopleList = () => {
   const dispatch = useDispatch();
