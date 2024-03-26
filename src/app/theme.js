@@ -11,6 +11,7 @@ export const theme = {
     black: "#000000",
     pattensBlue: "#D6E4FF",
     scienceBlue: "#0044CC",
+    darkGray: "#333333",
   },
   breakpoint: {
     smallMobileMax: 319,

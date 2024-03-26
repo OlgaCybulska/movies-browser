@@ -9,6 +9,7 @@ import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect, Route, Switch } from "react-router-dom/cjs/react-router-dom";
 import PeopleList from "./features/people/PeopleList";
 import MovieDetails from "./features/movies/MovieDetails";
+import PeopleDetails from "./features/people/PeopleDetails";
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
         <HashRouter>
           <SiteHeader />
           <Switch>
-            {/* <Route path="/movies/:id"> // This line should be used when we get movie details data from API */}
-            <Route path="/movies/movie-details-static">
+            <Route path="/people/:id">
+              <PeopleDetails />
+            </Route>
+            <Route path="/movies/:id">
               <MovieDetails />
             </Route>
             <Route path="/people">

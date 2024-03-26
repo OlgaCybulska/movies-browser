@@ -1,24 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useDataURL } from "../../../utils/API/useDataURL";
 import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
-import { SectionHeader } from "../../../common/SectionHeader";
-import { Tile } from "../../../common/Tile";
-import { fetchMovies } from "./moviesListSlice";
-import { StyledLink } from "./styled";
-import { GridWrapper } from "../../../common/Tile/styled";
-import { selectMovies, selectStatus } from "./moviesListSlice";
-import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
+import LoadingPage from "../../../common/LoadingPage";
+import { SectionHeader } from "../../../common/SectionHeader";
+import { GridWrapper } from "../../../common/Tile/styled";
+import { Tile } from "../../../common/Tile";
+import { Pagination } from "../../../common/Pagination";
+import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import { StyledLink } from "./styled";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-  const popularMovies = useSelector(selectMovies);
+
   const status = useSelector(selectStatus);
+  const dataURL = useDataURL();
 
   useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
+    dispatch(fetchData(dataURL));
+  }, [dataURL, dispatch]);
+
+  const popularMovies = useSelector(selectData);
 
   switch (status) {
     case "initial":
@@ -29,27 +33,29 @@ export const MovieList = () => {
       return <ErrorPage />;
     case "success":
       return (
-        <Container>
-          <Section>
-            <SectionHeader>Popular movies</SectionHeader>
-            <GridWrapper>
-              {popularMovies.map((movie) => (
-                <li key={movie.id}>
-                  {/* <StyledLink to={`/movies/${movie.id}`}> // This line should be used after we get movie details data from API */}
-                  <StyledLink to="/movies/movie-details-static">
-                    <Tile
-                      posterPath={movie.poster_path}
-                      title={movie.original_title}
-                      subtitle={movie.release_date.slice(0, 4)}
-                      rate={movie.vote_average.toFixed(1)}
-                      votes={movie.vote_count}
-                    />
-                  </StyledLink>
-                </li>
-              ))}
-            </GridWrapper>
-          </Section>
-        </Container>
+        <>
+          <Container>
+            <Section>
+              <SectionHeader>Popular movies</SectionHeader>
+              <GridWrapper>
+                {popularMovies.results ? popularMovies.results[0].title && popularMovies.results.map((movie) => (
+                  <li key={movie.id}>
+                    <StyledLink to={`/movies/${movie.id}`}>
+                      <Tile
+                        posterPath={movie.poster_path}
+                        title={movie.original_title}
+                        year={movie.release_date.slice(0, 4)}
+                        rate={movie.vote_average.toFixed(1)}
+                        votes={movie.vote_count}
+                      />
+                    </StyledLink>
+                  </li>
+                )) : null}
+              </GridWrapper>
+            </Section>
+          </Container>
+          <Pagination />
+        </>
       );
   }
 };

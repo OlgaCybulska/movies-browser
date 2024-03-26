@@ -1,11 +1,34 @@
-## DEMO 
-https://olgacybulska.github.io/movies-browser/
+# Movies Browser
 
-
-
-# Getting Started with Create React App
+Discover a vast collection of movies using our browser. Explore genres, ratings, and cast information.\
+Check it out [**here**](https://olgacybulska.github.io/movies-browser/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Authors
+
+* Olga Cybulska - [OlgaCybulska](https://github.com/OlgaCybulska).
+* Kacper Wojda - [wojdaSoftware](https://github.com/wojdaSoftware).
+* Oskar Tracz - [traczoskar](https://github.com/traczoskar).
+
+## Technologies
+
+* HTML
+* CSS
+  * Normalize.css
+  * Grid
+  * Flex
+  * Media queries
+  * styled-components
+* Javascript
+  * ES6+ features
+  * create-react-app
+    * React Redux Toolkit
+    * Redux-Saga
+    * React Hooks
+    * Custom Hooks
+
+# Create React App
 
 ## Available Scripts
 

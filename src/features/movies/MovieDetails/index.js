@@ -1,13 +1,29 @@
+import { useDispatch, useSelector } from "react-redux";
+import { Section } from "../../../common/Section";
+import { SectionHeader } from "../../../common/SectionHeader";
+import { useDataURL } from "../../../utils/API/useDataURL";
+import { useEffect } from "react";
+import { fetchAdditionalData, fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
+import { SmallGridWrapper } from "../../../common/Tile/styled";
 import { Container } from "../../../common/Container";
 import BackdropSection from "./Backdrop";
 import examplePoster from "../../../assets/example_poster.png";
 import examplePerson from "../../../assets/example_person.png";
 import { DetailTile, SmallTile } from "../../../common/Tile";
-import { Section } from "../../../common/Section";
-import { SectionHeader } from "../../../common/SectionHeader";
-import { SmallGridWrapper } from "../../../common/Tile/styled";
 
 const MovieDetails = () => {
+  const dispatch = useDispatch();
+  const dataURL = useDataURL();
+  const additionalDataURL = useAdditionalDataURL();
+
+  useEffect(() => {
+    dispatch(fetchData(dataURL));
+    dispatch(fetchAdditionalData(additionalDataURL));
+  }, [dispatch, dataURL, additionalDataURL]);
+
+  const movieDetails = useSelector(selectData);
+
   return (
     <>
       <BackdropSection title="Mulan" votes="335" rate="7,8" />
@@ -105,6 +121,6 @@ const MovieDetails = () => {
       </Container>
     </>
   );
-};
+}
 
 export default MovieDetails;
