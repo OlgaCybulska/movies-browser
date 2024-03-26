@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import { StyledList, StyledListItem, StyledNav, StyledNavLink } from "./styled";
 import { useDispatch } from "react-redux";
 import { setSearchContent } from "./navBarSlice";
+import { useEffect } from "react";
 
 const NavBar = () => {
   const location = useLocation();
@@ -9,7 +10,10 @@ const NavBar = () => {
 
   const searchKeyword = location.pathname.split("/")[1];
 
-  dispatch(setSearchContent(searchKeyword));
+  useEffect(() => {
+    dispatch(setSearchContent(searchKeyword));
+  }, [searchKeyword]);
+  
 
   return (
     <StyledNav>

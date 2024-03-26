@@ -4,21 +4,24 @@ import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { Tile } from "../../../common/Tile";
-import { fetchMovies } from "./moviesListSlice";
 import { GridWrapper, StyledLink } from "./styled";
-import { selectMovies, selectStatus } from "./moviesListSlice";
 import { LoadingPage } from "../../../common/LoadingPage";
 import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
+import { useDataURL } from "../../../utils/API/useDataURL";
+import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-  const popularMovies = useSelector(selectMovies);
+
   const status = useSelector(selectStatus);
+  const dataURL = useDataURL();
 
   useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
+    dispatch(fetchData(dataURL));
+  }, [dataURL, dispatch]);
+
+  const popularMovies = useSelector(selectData);
 
   switch (status) {
     case "initial":
@@ -34,7 +37,7 @@ export const MovieList = () => {
             <Section>
               <SectionHeader>Popular movies</SectionHeader>
               <GridWrapper>
-                {popularMovies.map((movie) => (
+                {popularMovies.results ? popularMovies.results[0].title && popularMovies.results.map((movie) => (
                   <li key={movie.id}>
                     <StyledLink to={`/movies/${movie.id}`}>
                       <Tile
@@ -46,7 +49,7 @@ export const MovieList = () => {
                       />
                     </StyledLink>
                   </li>
-                ))}
+                )) : null}
               </GridWrapper>
             </Section>
           </Container>

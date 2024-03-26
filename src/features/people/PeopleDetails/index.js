@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
-import { useEffect } from "react";
 import { fetchAdditionalData, fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import { useEffect } from "react";
 import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 
-const MovieDetails = () => {
+const PeopleDetails = () => {
   const dispatch = useDispatch();
   const dataURL = useDataURL();
   const status = useSelector(selectStatus);
@@ -17,13 +17,13 @@ const MovieDetails = () => {
     dispatch(fetchAdditionalData(additionalDataURL));
   }, [dispatch, dataURL, additionalDataURL]);
 
-  const movieDetails = useSelector(selectData);
+  const peopleDetails = useSelector(selectData);
 
   return (
     <Section>
-      <SectionHeader>{movieDetails.original_title}</SectionHeader>
+      <SectionHeader>{peopleDetails.name}</SectionHeader>
     </Section>
   );
-}
+};
 
-export default MovieDetails;
+export default PeopleDetails;
