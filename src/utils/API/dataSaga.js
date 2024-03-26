@@ -16,7 +16,6 @@ function* fetchDataHandler(action) {
     }
     yield put(fetchDataSuccess(apiData));
   } catch (error) {
-    console.log(error);
     yield put(fetchDataError());
   }
 }
@@ -29,7 +28,6 @@ function* fetchAdditionalDataHandler(action) {
     }
     yield put(fetchAdditionalData(apiData));
   } catch (error) {
-    console.log(error);
   }
 }
 
