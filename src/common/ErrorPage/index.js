@@ -7,7 +7,7 @@ import {
 } from "./styled";
 import errorIcon from "../../assets/error.png";
 
-export const ErrorPage = () => {
+const ErrorPage = () => {
   return (
     <ErrorContainer>
       <StyledErrorIcon src={errorIcon} alt="Error Icon" />
@@ -21,3 +21,5 @@ export const ErrorPage = () => {
     </ErrorContainer>
   );
 };
+
+export default ErrorPage;

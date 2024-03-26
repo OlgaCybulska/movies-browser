@@ -16,5 +16,6 @@ export const GlobalStyle = createGlobalStyle`
         background: ${({ theme }) => theme.color.whisper};
         font-size: 16px;
         color: ${({ theme }) => theme.color.woodSmoke};
+        padding-bottom: 103px;
     }
 `;

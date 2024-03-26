@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useDataURL } from "../../../utils/API/useDataURL";
 import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
+import ErrorPage from "../../../common/ErrorPage";
+import LoadingPage from "../../../common/LoadingPage";
 import { SectionHeader } from "../../../common/SectionHeader";
+import { GridWrapper } from "../../../common/Tile/styled";
 import { Tile } from "../../../common/Tile";
-import { GridWrapper, StyledLink } from "./styled";
-import { LoadingPage } from "../../../common/LoadingPage";
-import { ErrorPage } from "../../../common/ErrorPage";
 import { Pagination } from "../../../common/Pagination";
-import { useDataURL } from "../../../utils/API/useDataURL";
 import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import { StyledLink } from "./styled";
 
 export const MovieList = () => {
   const dispatch = useDispatch();

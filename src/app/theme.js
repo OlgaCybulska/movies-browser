@@ -14,7 +14,9 @@ export const theme = {
     darkGray: "#333333",
   },
   breakpoint: {
-    mobileMax: 767,
+    smallMobileMax: 319,
+    mobileMax: 500,
+    largeMobileMax: 767,
     tabletVerticalMax: 991,
     tabletHorizontalMax: 1199,
     laptopMax: 1400,
