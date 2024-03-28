@@ -18,18 +18,23 @@ const dataSlice = createSlice({
     fetchDataError: (state) => {
       state.status = "error";
     },
-    fetchAdditionalData: (state, {payload: apiData}) => {
+    fetchAdditionalData: (state, { payload: apiData }) => {
       state.additionalApiData = apiData;
     },
   },
 });
 
-export const { fetchData, fetchDataSuccess, fetchDataError, fetchAdditionalData } =
-  dataSlice.actions;
+export const {
+  fetchData,
+  fetchDataSuccess,
+  fetchDataError,
+  fetchAdditionalData,
+} = dataSlice.actions;
 
 const selectDataState = (state) => state.data;
 
 export const selectData = (state) => selectDataState(state).apiData;
 export const selectStatus = (state) => selectDataState(state).status;
-
+export const selectAdditionalData = (state) =>
+  selectDataState(state).additionalApiData;
 export default dataSlice.reducer;
