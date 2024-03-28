@@ -80,6 +80,7 @@ export const DetailTile = ({
   rate,
   votes,
   posterPath,
+  tags,
   overview,
   isOnMainTile,
   isOnBackdrop,
@@ -120,9 +121,9 @@ export const DetailTile = ({
           )}
           <>
             <Genres>
-              <GenreTag>Action</GenreTag>
-              <GenreTag>Adventure</GenreTag>
-              <GenreTag>Drama</GenreTag>
+              {tags.map(({ name }) => (
+                <GenreTag key={name}>{name}</GenreTag>
+              ))}
             </Genres>
             <Rating
               votes={votes}
