@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { ReactComponent as NoMovieSVG } from "../../assets/icons/noMovie.svg";
 import { ReactComponent as NoPersonSVG } from "../../assets/icons/noPerson.svg";
+import { Link } from "react-router-dom";
 
 //---Section Grid Wrappers---
 
@@ -462,4 +463,9 @@ export const GenreTag = styled.li`
     padding: 4px 8px;
     font-size: 10px;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.woodSmoke};
 `;
