@@ -3,7 +3,12 @@ import { Section } from "../../../common/Section";
 import { SectionHeader } from "../../../common/SectionHeader";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { useEffect } from "react";
-import { fetchAdditionalData, fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import {
+  fetchAdditionalData,
+  fetchData,
+  selectData,
+  selectStatus,
+} from "../../../utils/API/dataSlice";
 import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 import { SmallGridWrapper } from "../../../common/Tile/styled";
 import { Container } from "../../../common/Container";
@@ -29,6 +34,7 @@ const MovieDetails = () => {
       <BackdropSection title="Mulan" votes="335" rate="7,8" />
       <Container>
         <DetailTile
+          movieTile={true}
           posterPath={examplePoster}
           title="Mulan"
           subtitle="2020"
@@ -121,6 +127,6 @@ const MovieDetails = () => {
       </Container>
     </>
   );
-}
+};
 
 export default MovieDetails;
