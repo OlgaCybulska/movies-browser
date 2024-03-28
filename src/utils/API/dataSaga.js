@@ -5,10 +5,7 @@ import {
   fetchDataSuccess,
   fetchDataError,
   fetchAdditionalData,
-  fetchGenresSuccess,
 } from "./dataSlice";
-import { getGenres } from "./getGenres";
-import { saveGenresInLocalStorage } from "./localStorage";
 
 function* fetchDataHandler(action) {
   try {
@@ -23,21 +20,6 @@ function* fetchDataHandler(action) {
   }
 }
 
-function* fetchGenresHandler() {
-  try {
-    const genres = yield call(getGenres);
-    yield delay(1000);
-    if (genres.success === false) {
-      throw new Error();
-    }
-    yield all([
-      call(saveGenresInLocalStorage, genres),
-      put(fetchGenresSuccess(genres)),
-    ]);
-  } catch (error) {
-    yield put(fetchDataError());
-  }
-}
 function* fetchAdditionalDataHandler(action) {
   try {
     const apiData = yield call(getData, action.payload);
@@ -51,7 +33,6 @@ function* fetchAdditionalDataHandler(action) {
 export function* dataSaga() {
   yield all([
     takeLatest(fetchData.type, fetchDataHandler),
-    takeLatest(fetchData.type, fetchGenresHandler),
     takeLatest(fetchAdditionalData.type, fetchAdditionalDataHandler),
   ]);
 }
