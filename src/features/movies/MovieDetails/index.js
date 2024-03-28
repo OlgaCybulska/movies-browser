@@ -56,6 +56,7 @@ const MovieDetails = () => {
             firstData={movieDetails.production_countries
               .map((country) => country.name)
               .join(", ")}
+            tags={movieDetails.genres}
             secondData={formatDate(movieDetails.release_date)}
             votes={movieDetails.vote_count}
             rate={movieDetails.vote_average.toFixed(1)}
