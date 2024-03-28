@@ -62,8 +62,7 @@ export const SmallTile = ({ posterPath, title, subtitle }) => {
     <SmallTileContainer>
       <SmallTileImageContainer>
         {posterPath ? (
-          // <TilePoster src={`${posterURL}${posterPath}`} alt="" /> this line to use for future API data
-          <TilePoster src={posterPath} alt="Poster" />
+          <TilePoster src={`${posterURL}${posterPath}`} alt="" />
         ) : (
           <NoPersonIcon />
         )}
@@ -75,6 +74,7 @@ export const SmallTile = ({ posterPath, title, subtitle }) => {
 };
 
 export const DetailTile = ({
+  movieTile,
   title,
   subtitle,
   rate,
@@ -95,8 +95,7 @@ export const DetailTile = ({
       <DetailTileContainer>
         <DetailTileImageContainer>
           {posterPath ? (
-            // <TilePoster src={`${posterURL}${posterPath}`} alt="Poster" /> this line to use for future API data
-            <TilePoster src={posterPath} alt="Poster" />
+            <TilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
           ) : (
             <NoMovieIcon />
           )}
@@ -107,30 +106,36 @@ export const DetailTile = ({
           {firstData && (
             <TileData>
               <TileDataContent>
-                <TileDataTitle>Production:</TileDataTitle>
+                <TileDataTitle>
+                  {movieTile ? `Production: ` : `Date of birth: `}
+                </TileDataTitle>
 
                 {firstData}
               </TileDataContent>
               <TileDataContent>
-                <TileDataTitle>Release date:</TileDataTitle>
+                <TileDataTitle>
+                  {movieTile ? `Release date: ` : `Place of birth: `}
+                </TileDataTitle>
 
                 {secondData}
               </TileDataContent>
             </TileData>
           )}
-          <>
-            <Genres>
-              <GenreTag>Action</GenreTag>
-              <GenreTag>Adventure</GenreTag>
-              <GenreTag>Drama</GenreTag>
-            </Genres>
-            <Rating
-              votes={votes}
-              rate={rate}
-              isOnBackdrop={isOnBackdrop}
-              isOnMainTile={isOnMainTile}
-            />
-          </>
+          {movieTile ? (
+            <>
+              <Genres>
+                <GenreTag>Action</GenreTag>
+                <GenreTag>Adventure</GenreTag>
+                <GenreTag>Drama</GenreTag>
+              </Genres>
+              <Rating
+                votes={votes}
+                rate={rate}
+                isOnBackdrop={isOnBackdrop}
+                isOnMainTile={isOnMainTile}
+              />
+            </>
+          ) : null}
         </DetailDescription>
         {overview && <Overview>{overview}</Overview>}
       </DetailTileContainer>
