@@ -27,7 +27,7 @@ import { posterURL } from "../../utils/API/apiDataURLs";
 import { motion } from "framer-motion";
 import Rating from "../Rating";
 
-export const Tile = ({ title, subtitle, rate, votes, posterPath }) => {
+export const Tile = ({ title, subtitle, genres, rate, votes, posterPath }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -46,9 +46,9 @@ export const Tile = ({ title, subtitle, rate, votes, posterPath }) => {
           <MovieTitle>{title}</MovieTitle>
           <Subtitle>{subtitle}</Subtitle>
           <Genres>
-            <GenreTag>Action</GenreTag>
-            <GenreTag>Adventure</GenreTag>
-            <GenreTag>Drama</GenreTag>
+            {genres
+              ? genres.map((genre, id) => <GenreTag key={id}>{genre}</GenreTag>)
+              : ""}
           </Genres>
           <Rating rate={rate} votes={votes} />
         </Description>
@@ -77,6 +77,7 @@ export const SmallTile = ({ posterPath, title, subtitle }) => {
 export const DetailTile = ({
   title,
   subtitle,
+  genres,
   rate,
   votes,
   posterPath,
@@ -120,9 +121,11 @@ export const DetailTile = ({
           )}
           <>
             <Genres>
-              <GenreTag>Action</GenreTag>
-              <GenreTag>Adventure</GenreTag>
-              <GenreTag>Drama</GenreTag>
+              {genres
+                ? genres.map((genreName, id) => (
+                    <GenreTag key={id}>{genreName}</GenreTag>
+                  ))
+                : ""}
             </Genres>
             <Rating
               votes={votes}

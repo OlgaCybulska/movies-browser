@@ -9,7 +9,12 @@ import { SectionHeader } from "../../../common/SectionHeader";
 import { GridWrapper } from "../../../common/Tile/styled";
 import { Tile } from "../../../common/Tile";
 import { Pagination } from "../../../common/Pagination";
-import { fetchData, selectData, selectStatus } from "../../../utils/API/dataSlice";
+import {
+  fetchData,
+  selectData,
+  selectStatus,
+  selectGenres,
+} from "../../../utils/API/dataSlice";
 import { StyledLink } from "./styled";
 
 export const MovieList = () => {
@@ -23,6 +28,7 @@ export const MovieList = () => {
   }, [dataURL, dispatch]);
 
   const popularMovies = useSelector(selectData);
+  const genres = useSelector(selectGenres);
 
   switch (status) {
     case "initial":
@@ -38,19 +44,27 @@ export const MovieList = () => {
             <Section>
               <SectionHeader>Popular movies</SectionHeader>
               <GridWrapper>
-                {popularMovies.results ? popularMovies.results[0].title && popularMovies.results.map((movie) => (
-                  <li key={movie.id}>
-                    <StyledLink to={`/movies/${movie.id}`}>
-                      <Tile
-                        posterPath={movie.poster_path}
-                        title={movie.original_title}
-                        year={movie.release_date.slice(0, 4)}
-                        rate={movie.vote_average.toFixed(1)}
-                        votes={movie.vote_count}
-                      />
-                    </StyledLink>
-                  </li>
-                )) : null}
+                {popularMovies.results
+                  ? popularMovies.results[0].title &&
+                    popularMovies.results.map((movie) => (
+                      <li key={movie.id}>
+                        <StyledLink to={`/movies/${movie.id}`}>
+                          <Tile
+                            posterPath={movie.poster_path}
+                            title={movie.original_title}
+                            genres={genres.genre_ids.map(
+                              (id) =>
+                                genres.genres.find((genre) => genre.id === id)
+                                  .name
+                            )}
+                            year={movie.release_date.slice(0, 4)}
+                            rate={movie.vote_average.toFixed(1)}
+                            votes={movie.vote_count}
+                          />
+                        </StyledLink>
+                      </li>
+                    ))
+                  : null}
               </GridWrapper>
             </Section>
           </Container>
