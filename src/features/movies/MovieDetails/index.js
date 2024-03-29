@@ -15,6 +15,12 @@ import { SmallGridWrapper } from "../../../common/Tile/styled";
 import { Container } from "../../../common/Container";
 import BackdropSection from "./Backdrop";
 import examplePerson from "../../../assets/example_person.png";
+import {
+  formatCountries,
+  formatDate,
+  formatRate,
+  formatYear,
+} from "../../../utils/dataFormatFunctions";
 import { DetailTile, SmallTile } from "../../../common/Tile";
 import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
@@ -33,19 +39,6 @@ const MovieDetails = () => {
   const status = useSelector(selectStatus);
   console.log(movieDetails);
 
-  // Data formatting functions:
-  const formatYear = (d) => d.split("-")[0];
-
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split("-");
-    return `${day}.${month}.${year}`;
-  };
-
-  const formatCountries = (c) => {
-    return c.map((country) => country.name).join(", ");
-  };
-
-  const formatRate = (r) => r.toFixed(1);
   // Rendering logic:
 
   switch (status) {
