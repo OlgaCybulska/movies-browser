@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search-icon.svg";
 
 export const StyledForm = styled.form`
-  align-self: center;
-  text-align: right;
+  display: flex;
+  align-items: center;
   width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
@@ -14,7 +14,6 @@ export const StyledForm = styled.form`
 export const StyledInput = styled.input`
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  display: inline-block;
   padding: 12px 24px 12px 64px;
   height: 48px;
   width: 100%;
@@ -45,12 +44,12 @@ export const StyledSearchIcon = styled(SearchIcon)`
 `;
 
 export const InputWrapper = styled.div`
-  display: inline-block;
+  display: flex;
   position: relative;
   max-width: 432px;
   width: 100%;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.largeMobileMax}px) {
     max-width: 100%;
   }
 `;
