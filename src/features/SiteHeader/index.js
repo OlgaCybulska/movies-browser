@@ -1,19 +1,24 @@
 import NavBar from "./NavBar";
 import SearchBar from "./SearchBar";
-import { FlexContainer, FlexItem, GridContainer, StyledCameraIcon, StyledHeader, StyledTitle } from "./styled";
+import {
+  GridContainer,
+  StyledCameraIcon,
+  StyledHeader,
+  StyledLink,
+  StyledTitle,
+  Wrapper,
+} from "./styled";
 
 const SiteHeader = () => (
   <StyledHeader>
     <GridContainer>
-      <FlexContainer>
-        <FlexItem>
+      <Wrapper>
+        <StyledLink to="/movies-browser#/movies">
           <StyledCameraIcon />
-          <StyledTitle>
-            Movies Browser
-          </StyledTitle>
-        </FlexItem>
+          <StyledTitle>Movies Browser</StyledTitle>
+        </StyledLink>
         <NavBar />
-      </FlexContainer>
+      </Wrapper>
       <SearchBar />
     </GridContainer>
   </StyledHeader>
