@@ -1,76 +1,68 @@
 import {
-  Description,
   MovieTitle,
   GenreTag,
   Genres,
-  TileContainer,
-  TileImageContainer,
   TilePoster,
-  NoMovieIcon,
   Subtitle,
-  DetailTileContainer,
-  DetailTileImageContainer,
-  DetailDescription,
   DetailMovieTitle,
   DetailSubtitle,
   Overview,
-  TileData,
-  TileDataContent,
-  TileDataTitle,
-  SmallTileContainer,
-  SmallTileImageContainer,
-  SmallTileTitle,
-  SmallSubtitle,
-  NoPersonIcon,
+  StyledMovieTile,
+  MovieInfo,
+  DetailTilePoster,
+  StyledDetailTile,
+  NoPersonPlaceholder,
+  NoMoviePlaceholder,
+  PersonTitle,
+  PersonTilePoster,
+  StyledPersonTile,
+  PersonSubtitle,
+  DetailInfo,
+  AboutContent,
+  AboutTitle,
+  AboutContainer,
 } from "./styled";
 import { posterURL } from "../../utils/API/apiDataURLs";
-import { motion } from "framer-motion";
 import Rating from "../Rating";
 
-export const Tile = ({ title, subtitle, rate, votes, posterPath }) => {
+export const Tile = ({ title, subtitle, rate, votes, posterPath, link }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <TileContainer>
-        <TileImageContainer>
-          {posterPath ? (
-            <TilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
-          ) : (
-            <NoMovieIcon />
-          )}
-        </TileImageContainer>
-        <Description>
+    <StyledMovieTile to={link}>
+      {posterPath ? (
+        <TilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
+      ) : (
+        <NoMoviePlaceholder />
+      )}
+
+      <MovieInfo>
+        <div>
           <MovieTitle>{title}</MovieTitle>
           <Subtitle>{subtitle}</Subtitle>
           <Genres>
             <GenreTag>Action</GenreTag>
             <GenreTag>Adventure</GenreTag>
             <GenreTag>Drama</GenreTag>
+            <GenreTag>ScienceFiction</GenreTag>
+            <GenreTag>Horror</GenreTag>
           </Genres>
-          <Rating rate={rate} votes={votes} />
-        </Description>
-      </TileContainer>
-    </motion.div>
+        </div>
+        <Rating rate={rate} votes={votes} />
+      </MovieInfo>
+    </StyledMovieTile>
   );
 };
 
-export const SmallTile = ({ posterPath, title, subtitle }) => {
+export const PersonTile = ({ posterPath, name, subtitle, id }) => {
   return (
-    <SmallTileContainer>
-      <SmallTileImageContainer>
-        {posterPath ? (
-          // <TilePoster src={`${posterURL}${posterPath}`} alt="" /> this line to use for future API data
-          <TilePoster src={posterPath} alt="Poster" />
-        ) : (
-          <NoPersonIcon />
-        )}
-      </SmallTileImageContainer>
-      <SmallTileTitle>{title}</SmallTileTitle>
-      <SmallSubtitle>{subtitle}</SmallSubtitle>
-    </SmallTileContainer>
+    <StyledPersonTile to={`/people/${id}`}>
+      {posterPath ? (
+        <PersonTilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
+      ) : (
+        <NoPersonPlaceholder />
+      )}
+      <PersonTitle>{name}</PersonTitle>
+      <PersonSubtitle>{subtitle}</PersonSubtitle>
+    </StyledPersonTile>
   );
 };
 
@@ -88,53 +80,42 @@ export const DetailTile = ({
   secondData,
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <DetailTileContainer>
-        <DetailTileImageContainer>
-          {posterPath ? (
-            // <TilePoster src={`${posterURL}${posterPath}`} alt="Poster" /> this line to use for future API data
-            <TilePoster src={posterPath} alt="Poster" />
-          ) : (
-            <NoMovieIcon />
-          )}
-        </DetailTileImageContainer>
-        <DetailDescription>
-          <DetailMovieTitle>{title}</DetailMovieTitle>
-          {title && <DetailSubtitle>{subtitle}</DetailSubtitle>}
-          {firstData && (
-            <TileData>
-              <TileDataContent>
-                <TileDataTitle>Production:</TileDataTitle>
-
-                {firstData}
-              </TileDataContent>
-              <TileDataContent>
-                <TileDataTitle>Release date:</TileDataTitle>
-
-                {secondData}
-              </TileDataContent>
-            </TileData>
-          )}
-          <>
-            <Genres>
-              {tags.map(({ name }) => (
-                <GenreTag key={name}>{name}</GenreTag>
-              ))}
-            </Genres>
-            <Rating
-              votes={votes}
-              rate={rate}
-              isOnBackdrop={isOnBackdrop}
-              isOnMainTile={isOnMainTile}
-            />
-          </>
-        </DetailDescription>
-        {overview && <Overview>{overview}</Overview>}
-      </DetailTileContainer>
-    </motion.div>
+    <StyledDetailTile>
+      {posterPath ? (
+        <DetailTilePoster src={posterPath} alt="Poster" />
+      ) : (
+        <NoMoviePlaceholder />
+      )}
+      <DetailInfo>
+        <DetailMovieTitle>{title}</DetailMovieTitle>
+        {title && <DetailSubtitle>{subtitle}</DetailSubtitle>}
+        {firstData && (
+          <AboutContainer>
+            <AboutContent>
+              <AboutTitle>Production:</AboutTitle>
+              {firstData}
+            </AboutContent>
+            <AboutContent>
+              <AboutTitle>Release date:</AboutTitle>
+              {secondData}
+            </AboutContent>
+          </AboutContainer>
+        )}
+        <>
+          <Genres>
+            {tags.map(({ name }) => (
+              <GenreTag key={name}>{name}</GenreTag>
+            ))}
+          </Genres>
+          <Rating
+            votes={votes}
+            rate={rate}
+            isOnBackdrop={isOnBackdrop}
+            isOnMainTile={isOnMainTile}
+          />
+        </>
+      </DetailInfo>
+      {overview && <Overview>{overview}</Overview>}
+    </StyledDetailTile>
   );
 };
