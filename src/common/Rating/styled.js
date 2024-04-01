@@ -4,7 +4,7 @@ import { ReactComponent as StarIcon } from "../../assets/icons/shape-star.svg";
 //---Ratings---
 
 export const RatingContainer = styled.div`
-  margin-top: auto;
+  margin: 10px 0 0;
   display: flex;
   gap: 12px;
   flex-wrap: nowrap;
