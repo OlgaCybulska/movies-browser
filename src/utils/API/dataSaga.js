@@ -7,6 +7,7 @@ import {
   fetchAdditionalData,
   fetchGenres,
 } from "./dataSlice";
+import { genresLocalStorageKey, saveInLocalStorage } from "./localStorage";
 
 function* fetchDataHandler(action) {
   try {
@@ -38,6 +39,7 @@ function* fetchGenresHandler(action) {
       throw new Error();
     }
     yield put(fetchGenres(apiData));
+    yield call(saveInLocalStorage, apiData, genresLocalStorageKey);
   } catch (error) {}
 }
 

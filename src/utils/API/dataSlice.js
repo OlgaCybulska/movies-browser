@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { genresLocalStorageKey, getFromLocalStorage } from "./localStorage";
 
 const dataSlice = createSlice({
   name: "data",
   initialState: {
     apiData: {},
     additionalApiData: {},
-    genres: {},
+    genres: getFromLocalStorage(genresLocalStorageKey),
     status: "initial",
   },
   reducers: {
