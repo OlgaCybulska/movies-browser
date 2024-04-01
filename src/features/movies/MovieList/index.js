@@ -31,8 +31,8 @@ export const MovieList = () => {
   }, [dataURL, dispatch]);
 
   useEffect(() => {
-    if (!genres) {
-      dispatch(fetchGenres(genresURL))
+    if (!genres.genres) {
+      dispatch(fetchGenres(genresURL));
     }
   })
 
@@ -61,8 +61,8 @@ export const MovieList = () => {
                         <Tile
                           posterPath={movie.poster_path}
                           title={movie.original_title}
-                          genres={genres && movie.genre_ids.map((id) =>
-                              genres.genres.find((genre) => genre.id === id).name
+                          genres={genres.genres && movie.genre_ids.map((id) =>
+                            genres.genres.find((genre) => genre.id === id).name
                           )}
                           year={movie.release_date.slice(0, 4)}
                           rate={movie.vote_average.toFixed(1)}
