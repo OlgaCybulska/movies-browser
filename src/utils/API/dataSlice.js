@@ -1,14 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getGenresFromLocalStorage } from "./localStorage";
 
 const dataSlice = createSlice({
   name: "data",
   initialState: {
     apiData: {},
     additionalApiData: {},
-    genres: Array.isArray(getGenresFromLocalStorage())
-      ? getGenresFromLocalStorage()
-      : [{}],
+    genres: {},
     status: "initial",
   },
   reducers: {
@@ -25,9 +22,8 @@ const dataSlice = createSlice({
     fetchAdditionalData: (state, { payload: apiData }) => {
       state.additionalApiData = apiData;
     },
-    fetchGenresSuccess: (state, { payload: genres }) => {
+    fetchGenres: (state, { payload: genres }) => {
       state.genres = genres;
-      state.status = "success";
     },
   },
 });
@@ -37,7 +33,7 @@ export const {
   fetchDataSuccess,
   fetchDataError,
   fetchAdditionalData,
-  fetchGenresSuccess,
+  fetchGenres,
 } = dataSlice.actions;
 
 const selectDataState = (state) => state.data;
