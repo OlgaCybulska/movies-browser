@@ -1,5 +1,5 @@
-export const saveGenresInLocalStorage = (genres, localStorageKey) =>
+export const saveInLocalStorage = (genres, localStorageKey) =>
   localStorage.setItem(localStorageKey, JSON.stringify(genres));
 
-export const getGenresFromLocalStorage = (localStorageKey) =>
+export const getFromLocalStorage = (localStorageKey) =>
   JSON.parse(localStorage.getItem(localStorageKey)) || [];
