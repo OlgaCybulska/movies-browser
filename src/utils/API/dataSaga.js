@@ -5,6 +5,7 @@ import {
   fetchDataSuccess,
   fetchDataError,
   fetchAdditionalData,
+  fetchGenres,
 } from "./dataSlice";
 
 function* fetchDataHandler(action) {
@@ -30,9 +31,20 @@ function* fetchAdditionalDataHandler(action) {
   } catch (error) {}
 }
 
+function* fetchGenresHandler(action) {
+  try {
+    const apiData = yield call(getData, action.payload);
+    if (apiData.success === false) {
+      throw new Error();
+    }
+    yield put(fetchGenres(apiData));
+  } catch (error) {}
+}
+
 export function* dataSaga() {
   yield all([
     takeLatest(fetchData.type, fetchDataHandler),
     takeLatest(fetchAdditionalData.type, fetchAdditionalDataHandler),
+    takeLatest(fetchGenres.type, fetchGenresHandler),
   ]);
 }
