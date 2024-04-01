@@ -52,7 +52,7 @@ export const MovieList = () => {
                           <Tile
                             posterPath={movie.poster_path}
                             title={movie.original_title}
-                            genres={genres.genre_ids.map(
+                            genres={genres.genre_ids && genres.genre_ids.map(
                               (id) =>
                                 genres.genres.find((genre) => genre.id === id)
                                   .name
