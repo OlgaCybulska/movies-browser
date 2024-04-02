@@ -2,11 +2,11 @@ import { useState } from "react";
 import { InputWrapper, StyledForm, StyledInput, StyledSearchIcon } from "./styled";
 import { useSelector } from "react-redux";
 import { selectSearchContent } from "../NavBar/navBarSlice";
-import { useReplaceQueryParameter } from "../../../utils/queryParams";
+import { useQueryParameters, useReplaceQueryParameter } from "../../../utils/queryParams";
 import { searchBarParamName } from "../../../utils/searchBarParamName";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(useQueryParameters(searchBarParamName) || "");
   const searchContent = useSelector(selectSearchContent);
   const replaceQueryParameter = useReplaceQueryParameter();
 
