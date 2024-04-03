@@ -1,4 +1,4 @@
-import { call, delay, put, takeLatest, all } from "redux-saga/effects";
+import { call, delay, put, takeLatest, all, debounce } from "redux-saga/effects";
 import { getData } from "./getData";
 import {
   fetchData,
@@ -33,7 +33,7 @@ function* fetchAdditionalDataHandler(action) {
 
 export function* dataSaga() {
   yield all([
-    takeLatest(fetchData.type, fetchDataHandler),
+    debounce(1000, fetchData.type, fetchDataHandler),
     takeLatest(fetchAdditionalData.type, fetchAdditionalDataHandler)
   ])
 }
