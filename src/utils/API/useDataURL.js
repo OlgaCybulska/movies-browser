@@ -36,7 +36,7 @@ export const useDataURL = (query) => {
   return `https://api.themoviedb.org/3/search/${apiSearchContent
     }?query=${query
     }&api_key=${apiKey
-    }&include_adult=${true
+    }&include_adult=${false
     }&language=${language
     }&page=${page
     }`;
