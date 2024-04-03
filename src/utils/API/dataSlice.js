@@ -37,6 +37,5 @@ export const selectData = (state) => selectDataState(state).apiData;
 export const selectAdditionalData = (state) =>
   selectDataState(state).additionalApiData;
 export const selectStatus = (state) => selectDataState(state).status;
-export const selectAdditionalData = (state) =>
-  selectDataState(state).additionalApiData;
+
 export default dataSlice.reducer;
