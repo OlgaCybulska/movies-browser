@@ -8,125 +8,122 @@ import {
   fetchData,
   selectData,
   selectStatus,
+  selectAdditionalData,
 } from "../../../utils/API/dataSlice";
+import { backdropURL, posterURL } from "../../../utils/API/apiDataURLs";
 import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
-import { SmallGridWrapper } from "../../../common/Tile/styled";
+import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
 import { Container } from "../../../common/Container";
 import BackdropSection from "./Backdrop";
-import examplePoster from "../../../assets/example_poster.png";
 import examplePerson from "../../../assets/example_person.png";
-import { DetailTile, SmallTile } from "../../../common/Tile";
+import {
+  formatCountries,
+  formatDate,
+  formatRate,
+  formatYear,
+} from "../../../utils/dataFormatFunctions";
+import {
+  ActorTile,
+  DetailTile,
+  PersonTile,
+  SmallTile,
+} from "../../../common/Tile";
+import LoadingPage from "../../../common/LoadingPage";
+import ErrorPage from "../../../common/ErrorPage";
 
 const MovieDetails = () => {
   const dispatch = useDispatch();
   const dataURL = useDataURL();
   const additionalDataURL = useAdditionalDataURL();
 
+  // Data fetching dispatches:
   useEffect(() => {
     dispatch(fetchData(dataURL));
     dispatch(fetchAdditionalData(additionalDataURL));
   }, [dispatch, dataURL, additionalDataURL]);
 
+  // Selectors:
+  const status = useSelector(selectStatus);
   const movieDetails = useSelector(selectData);
+  const additionalData = useSelector(selectAdditionalData);
+  const crew = additionalData.crew;
+  const cast = additionalData.cast;
 
-  return (
-    <>
-      <BackdropSection title="Mulan" votes="335" rate="7,8" />
-      <Container>
-        <DetailTile
-          movieTile={true}
-          posterPath={examplePoster}
-          title="Mulan"
-          subtitle="2020"
-          firstData="China, UnitedStates of America"
-          secondData="24.10.2020"
-          votes="335"
-          rate="7,8"
-          isOnBackdrop={false}
-          isOnMainTile={true}
-          overview="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-        />
-        <Section>
-          <SectionHeader>Cast</SectionHeader>
-          <SmallGridWrapper>
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
+  console.log("Crew:", crew, "Cast:", cast);
+
+  // Rendering logic:
+
+  switch (status) {
+    case "initial":
+      return null;
+    case "loading":
+      return <LoadingPage />;
+    case "error":
+      return <ErrorPage />;
+    case "success":
+      return (
+        <>
+          {movieDetails.backdrop_path && (
+            <BackdropSection
+              backgroundURL={`${backdropURL}${movieDetails.backdrop_path}`}
+              title={movieDetails.title}
+              votes={movieDetails.vote_count}
+              rate={formatRate(movieDetails.vote_average)}
             />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile posterPath="" title="Liu Yifei" subtitle="Mulan" />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-          </SmallGridWrapper>
-        </Section>
-        <Section>
-          <SectionHeader>Crew</SectionHeader>
-          <SmallGridWrapper>
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile posterPath="" title="Liu Yifei" subtitle="Mulan" />
-            <SmallTile posterPath="" title="Liu Yifei" subtitle="Mulan" />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-            <SmallTile
-              posterPath={examplePerson}
-              title="Liu Yifei"
-              subtitle="Mulan"
-            />
-          </SmallGridWrapper>
-        </Section>
-      </Container>
-    </>
-  );
+          )}
+
+          <Container>
+            {movieDetails.poster_path && (
+              <DetailTile
+                posterPath={`${posterURL}${movieDetails.poster_path}`}
+                title={movieDetails.title}
+                subtitle={formatYear(movieDetails.release_date)}
+                firstData={formatCountries(movieDetails.production_countries)}
+                tags={movieDetails.genres}
+                secondData={formatDate(movieDetails.release_date)}
+                votes={movieDetails.vote_count}
+                rate={formatRate(movieDetails.vote_average)}
+                isOnBackdrop={false}
+                isOnMainTile={true}
+                overview={movieDetails.overview}
+              />
+            )}
+
+            <Section>
+              <SectionHeader>Cast</SectionHeader>
+              <SmallGridWrapper>
+                {cast &&
+                  cast.slice(0, 10).map((movie) => (
+                    <li key={movie.cast_id}>
+                      <PersonTile
+                        posterPath={movie.profile_path}
+                        name={movie.name}
+                        subtitle={movie.character}
+                        id={movie.id}
+                      />
+                    </li>
+                  ))}
+              </SmallGridWrapper>
+            </Section>
+            <Section>
+              <SectionHeader>Crew</SectionHeader>
+              <SmallGridWrapper>
+                {crew &&
+                  crew.slice(0, 10).map((person) => (
+                    <li key={person.credit_id}>
+                      <PersonTile
+                        posterPath={person.profile_path}
+                        name={person.name}
+                        subtitle={person.job}
+                        id={person.id}
+                      />
+                    </li>
+                  ))}
+              </SmallGridWrapper>
+            </Section>
+          </Container>
+        </>
+      );
+  }
 };
-
 export default MovieDetails;

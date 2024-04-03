@@ -1,51 +1,42 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 import styled from "styled-components";
 
-export const StyledNav = styled.nav`
-  display: inline-block;
-  height: 100%;
-`;
-
 export const StyledList = styled.ul`
-  display: inline-flex;
-  list-style: none;
-  align-items: center;
-  height: 100%;
-  margin: 0 0 0 80px;
+  display: flex;
+  gap: 16px;
   padding: 0;
+  margin: 0;
+  list-style: none;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
-    margin: 0;
-  }
-`;
-
-export const StyledListItem = styled.li`
-  color: ${({ theme }) => theme.color.white};
-  font-size: 14px;
-  font-weight: 600;
-  padding: 13.5px 24px;
-  transition-duration: 200ms;
-
-  &:hover {
-    color: ${({ theme }) => theme.color.waterloo};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
-    padding: 8px 12px;
-    font-size: 12px;
+  @media (max-width: ${({ theme }) => theme.breakpoint.largeMobileMax}px) {
+    gap: 12px;
+    margin-left: 30px;
   }
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  border: 1px solid ${({ theme }) => theme.color.woodSmoke};
-  margin-right: 16px;
-  transition-duration: 250ms;
+  display: block;
+  color: ${({ theme }) => theme.color.white};
+  background: none;
+  border: none;
+  word-break: keep-all;
   border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13.5px 24px;
+  transition: 200ms;
+  text-decoration: none;
+  &:hover {
+    color: ${({ theme }) => theme.color.waterloo};
+  }
 
+  @media (max-width: ${({ theme }) => theme.breakpoint.largeMobileMax}px) {
+    border: 1px solid ${({ theme }) => theme.color.black};
+    padding: 10px 16px;
+  }
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
-    margin: 0 0 0 12px;
-    border: 1px solid ${({ theme }) => theme.color.black}
+    font-size: 12px;
+    padding: 8px 12px;
   }
 
   &.active {
