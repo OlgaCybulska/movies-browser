@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Container } from "../../../common/Container";
 import { Section } from "../../../common/Section";
@@ -13,8 +12,9 @@ import {
 } from "../../../utils/API/dataSlice";
 import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
-import { SmallGridWrapper, StyledLink } from "../../../common/Tile/styled";
-import { SmallTile } from "../../../common/Tile";
+import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
+import { StyledLink } from "../../../common/Tile/styled";
+import { PersonTile } from "../../../common/Tile";
 
 const PeopleList = () => {
   const dispatch = useDispatch();
@@ -46,12 +46,11 @@ const PeopleList = () => {
                   ? popularActors.results[0].gender &&
                     popularActors.results.map((actor) => (
                       <li key={actor.id}>
-                        <StyledLink to={`/people/${actor.id}`}>
-                          <SmallTile
-                            posterPath={actor.profile_path}
-                            title={actor.name}
-                          />
-                        </StyledLink>
+                        <PersonTile
+                          posterPath={actor.profile_path}
+                          name={actor.name}
+                          id={actor.id}
+                        />
                       </li>
                     ))
                   : null}
