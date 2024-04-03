@@ -13,7 +13,8 @@ import { useEffect } from "react";
 import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 import { Container } from "../../../common/Container";
 import { DetailTile } from "../../../common/Tile";
-import { StyledLink, GridWrapper } from "../../../common/Tile/styled";
+import { GridWrapper } from "../../../common/GridWrapper/styled";
+
 import { Tile } from "../../../common/Tile";
 
 const PeopleDetails = () => {
@@ -59,15 +60,16 @@ const PeopleDetails = () => {
               ? casts.length > 0 &&
                 casts.map((cast) => (
                   <li key={cast.id}>
-                    <StyledLink to={`/movies/${cast.id}`}>
-                      <Tile
-                        posterPath={cast.poster_path}
-                        title={cast.title}
-                        year={cast.year || "No release year available"}
-                        rate={cast.vote_average.toFixed(1) || ""}
-                        votes={cast.vote_count}
-                      />
-                    </StyledLink>
+                    <Tile
+                      movieTile={false}
+                      posterPath={cast.poster_path}
+                      title={cast.title}
+                      subtitle={cast.release_date}
+                      role={cast.character}
+                      rate={cast.vote_average.toFixed(1) || ""}
+                      votes={cast.vote_count}
+                      link={`/movies/${cast.id}`}
+                    />
                   </li>
                 ))
               : null}
@@ -84,15 +86,16 @@ const PeopleDetails = () => {
               ? crews.length > 0 &&
                 crews.map((crew) => (
                   <li key={crew.id}>
-                    <StyledLink to={`/movies/${crew.id}`}>
-                      <Tile
-                        posterPath={crew.poster_path}
-                        title={crew.title}
-                        year={crew.year || "No release year available"}
-                        rate={crew.vote_average}
-                        votes={crew.vote_count}
-                      />
-                    </StyledLink>
+                    <Tile
+                      movieTile={false}
+                      posterPath={crew.poster_path}
+                      title={crew.title}
+                      subtitle={crew.year || "No release year available"}
+                      role={crew.job}
+                      rate={crew.vote_average}
+                      votes={crew.vote_count}
+                      link={`/movies/${crew.id}`}
+                    />
                   </li>
                 ))
               : null}
