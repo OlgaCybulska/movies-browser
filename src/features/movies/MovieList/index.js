@@ -69,7 +69,7 @@ export const MovieList = () => {
               </motion.div>
             </Section>
           </Container>
-          {popularMovies.total_results >= 10 && (<Pagination />)}
+          {popularMovies.total_pages > 1 && (<Pagination />)}
         </>
       );
   }
