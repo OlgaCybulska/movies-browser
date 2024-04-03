@@ -48,20 +48,20 @@ export const MovieList = () => {
                 transition={{ duration: 0.75 }}
               >
                 <GridWrapper>
-                  {popularMovies.results
+                  {popularMovies.results.length !== 0
                     ? popularMovies.results[0].title &&
-                      popularMovies.results.map((movie) => (
-                        <li key={movie.id}>
-                          <Tile
-                            link={`/movies/${movie.id}`}
-                            posterPath={movie.poster_path}
-                            title={movie.original_title}
-                            subtitle={formatYear(movie.release_date)}
-                            rate={formatRate(movie.vote_average)}
-                            votes={movie.vote_count}
-                          />
-                        </li>
-                      ))
+                    popularMovies.results.map((movie) => (
+                      <li key={movie.id}>
+                        <Tile
+                          link={`/movies/${movie.id}`}
+                          posterPath={movie.poster_path}
+                          title={movie.original_title}
+                          subtitle={formatYear(movie.release_date)}
+                          rate={formatRate(movie.vote_average)}
+                          votes={movie.vote_count}
+                        />
+                      </li>
+                    ))
                     : null}
                 </GridWrapper>
               </motion.div>
