@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { selectSearchContent } from "../../features/SiteHeader/NavBar/navBarSlice";
 import { selectPage } from "../../common/Pagination/paginationSlice";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
+import { useQueryParameters } from "../queryParams";
 
-export const useDataURL = () => {
+export const useDataURL = (query) => {
   const location = useLocation();
 
   const apiKey = "741487ab9378f09398cb15784041196d"
@@ -12,7 +13,6 @@ export const useDataURL = () => {
   const searchContent = useSelector(selectSearchContent);
   const page = useSelector(selectPage);
   const itemId = location.pathname.split("/")[2];
-  const query = false;
 
   let apiSearchContent;
 
