@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { maxPageNumber } from "../../utils/maxPageNumber";
+import { maxPageNumber } from "../../utils/useMaxPageNumber";
 
 const paginationSlice = createSlice({
   name: "pagination",
