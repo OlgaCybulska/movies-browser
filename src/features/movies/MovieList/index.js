@@ -16,12 +16,14 @@ import {
   selectStatus,
 } from "../../../utils/API/dataSlice";
 import { formatYear, formatRate } from "../../../utils/dataFormatFunctions";
+import { useQueryParameters } from "../../../utils/queryParams";
+import { searchBarParamName } from "../../../utils/searchBarParamName";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-
+  const query = useQueryParameters(searchBarParamName);
   const status = useSelector(selectStatus);
-  const dataURL = useDataURL();
+  const dataURL = useDataURL(query);
 
   useEffect(() => {
     dispatch(fetchData(dataURL));
