@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { InputWrapper, StyledForm, StyledInput, StyledSearchIcon } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchContent } from "../NavBar/navBarSlice";
@@ -14,6 +14,13 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const dataURL = useDataURL(query);
 
+  useEffect(() => {
+    if (query.trim() !== "") {
+      console.log(dataURL);
+      dispatch(fetchData(dataURL));
+    }
+  }, [dataURL]);
+
   const onInputChange = (target) => {
     setQuery(target.value);
 
@@ -21,8 +28,6 @@ const SearchBar = () => {
       key: searchBarParamName,
       value: target.value.trim() !== "" ? target.value.trim() : "",
     })
-    console.log(dataURL);
-    dispatch(fetchData(dataURL));
   };
 
   const handleSubmit = (event) => {
