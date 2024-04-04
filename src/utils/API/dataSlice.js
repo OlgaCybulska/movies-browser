@@ -34,12 +34,17 @@ export const {
   fetchDataSuccess,
   fetchDataError,
   fetchAdditionalData,
+
   fetchGenres,
+
+
 } = dataSlice.actions;
 
 const selectDataState = (state) => state.data;
 
 export const selectData = (state) => selectDataState(state).apiData;
+export const selectAdditionalData = (state) =>
+  selectDataState(state).additionalApiData;
 export const selectStatus = (state) => selectDataState(state).status;
 export const selectGenres = (state) => selectDataState(state).genres;
 

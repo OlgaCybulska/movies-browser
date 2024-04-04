@@ -9,9 +9,9 @@ import {
 import Rating from "../../../../common/Rating";
 import backdropPicture from "../../../../assets/example_backdrop.jpg";
 
-const BackdropSection = ({ title, votes, rate }) => (
+const BackdropSection = ({ backgroundURL, title, votes, rate }) => (
   <BackdropContainer>
-    <Backdrop $background={backdropPicture}>
+    <Backdrop $background={backgroundURL}>
       <GradientCover />
       <Vignette />
       <TitleContainer>

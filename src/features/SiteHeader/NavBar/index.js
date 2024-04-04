@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
-import { StyledList, StyledListItem, StyledNav, StyledNavLink } from "./styled";
+import { StyledList, StyledNavLink } from "./styled";
 import { useDispatch } from "react-redux";
 import { setSearchContent } from "./navBarSlice";
 import { useEffect } from "react";
@@ -13,24 +13,19 @@ const NavBar = () => {
   useEffect(() => {
     dispatch(setSearchContent(searchKeyword));
   }, [searchKeyword]);
-  
 
   return (
-    <StyledNav>
+    <nav>
       <StyledList>
-        <StyledNavLink to="/movies">
-          <StyledListItem>
-            MOVIES
-          </StyledListItem>
-        </StyledNavLink>
-        <StyledNavLink to="/people">
-          <StyledListItem>
-            PEOPLE
-          </StyledListItem>
-        </StyledNavLink>
+        <li>
+          <StyledNavLink to="/movies">MOVIES</StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/people">PEOPLE</StyledNavLink>
+        </li>
       </StyledList>
-    </StyledNav>
+    </nav>
   );
-}
+};
 
 export default NavBar;
