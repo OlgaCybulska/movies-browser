@@ -17,14 +17,10 @@ import {
   selectData,
   selectStatus,
   selectGenres,
-  fetchGenres
+  fetchGenres,
 } from "../../../utils/API/dataSlice";
-import { StyledLink } from "./styled";
 import { genresURL } from "../../../utils/API/apiDataURLs";
-
-} from "../../../utils/API/dataSlice";
 import { formatYear, formatRate } from "../../../utils/dataFormatFunctions";
-
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -41,10 +37,9 @@ export const MovieList = () => {
     if (!genres.genres) {
       dispatch(fetchGenres(genresURL));
     }
-  })
+  });
 
   const popularMovies = useSelector(selectData);
-
 
   switch (status) {
     case "initial":
@@ -60,7 +55,6 @@ export const MovieList = () => {
             <Section>
               <SectionHeader>Popular movies</SectionHeader>
 
-
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -75,9 +69,14 @@ export const MovieList = () => {
                             link={`/movies/${movie.id}`}
                             posterPath={movie.poster_path}
                             title={movie.original_title}
-                            genres={genres.genres && movie.genre_ids.map((id) =>
-                            genres.genres.find((genre) => genre.id === id).name
-                          )}
+                            genres={
+                              genres.genres &&
+                              movie.genre_ids.map(
+                                (id) =>
+                                  genres.genres.find((genre) => genre.id === id)
+                                    .name
+                              )
+                            }
                             subtitle={formatYear(movie.release_date)}
                             rate={formatRate(movie.vote_average)}
                             votes={movie.vote_count}
@@ -87,7 +86,6 @@ export const MovieList = () => {
                     : null}
                 </GridWrapper>
               </motion.div>
-
             </Section>
           </Container>
           <Pagination />
