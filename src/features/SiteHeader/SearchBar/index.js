@@ -6,6 +6,7 @@ import { useQueryParameters, useReplaceQueryParameter } from "../../../utils/que
 import { searchBarParamName } from "../../../utils/searchBarParamName";
 import { fetchData } from "../../../utils/API/dataSlice";
 import { useDataURL } from "../../../utils/API/useDataURL";
+import { setPage } from "../../../common/Pagination/paginationSlice";
 
 const SearchBar = () => {
   const [query, setQuery] = useState(useQueryParameters(searchBarParamName) || "");
@@ -15,11 +16,15 @@ const SearchBar = () => {
   const dataURL = useDataURL(query);
 
   useEffect(() => {
+    dispatch(setPage(1));
+  }, [query, dispatch])
+
+  useEffect(() => {
     if (query.trim() !== "") {
       console.log(dataURL);
       dispatch(fetchData(dataURL));
     }
-  }, [dataURL]);
+  }, [dataURL, query, dispatch]);
 
   const onInputChange = (target) => {
     setQuery(target.value);
