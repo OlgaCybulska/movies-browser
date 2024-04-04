@@ -25,9 +25,15 @@ import {
 import { posterURL } from "../../utils/API/apiDataURLs";
 import Rating from "../Rating";
 
-
-export const Tile = ({ title, subtitle, genres, rate, votes, posterPath }) => {
-
+export const Tile = ({
+  title,
+  subtitle,
+  genres,
+  rate,
+  votes,
+  posterPath,
+  link,
+}) => {
   return (
     <StyledMovieTile to={link}>
       {posterPath ? (
@@ -41,12 +47,9 @@ export const Tile = ({ title, subtitle, genres, rate, votes, posterPath }) => {
           <MovieTitle>{title}</MovieTitle>
           <Subtitle>{subtitle}</Subtitle>
           <Genres>
-
             {genres
               ? genres.map((genre, id) => <GenreTag key={id}>{genre}</GenreTag>)
               : ""}
-
-       
           </Genres>
         </div>
         <Rating rate={rate} votes={votes} />
@@ -84,8 +87,6 @@ export const DetailTile = ({
   secondData,
 }) => {
   return (
-
-
     <StyledDetailTile>
       {posterPath ? (
         <DetailTilePoster src={posterPath} alt="Poster" />
@@ -123,6 +124,5 @@ export const DetailTile = ({
       </DetailInfo>
       {overview && <Overview>{overview}</Overview>}
     </StyledDetailTile>
-
   );
 };
