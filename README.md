@@ -14,6 +14,21 @@ Discover a vast collection of movies using our **Movie Browser**. Search for mov
 - **Kacper Wojda - [wojdaSoftware](https://github.com/wojdaSoftware)**.
 - **Oskar Tracz - [traczoskar](https://github.com/traczoskar)**.
 
+## 🛠 Tech stack
+
+![React](https://camo.githubusercontent.com/31b08faa61951179c95f91d42f8ce1b56012e80fa6e269d23221031d1b13fd0d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3631444146422e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d5265616374266c6f676f436f6c6f723d626c61636b)
+![JavaScript ES6+](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Styled Components](https://img.shields.io/badge/Styled_Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
+![React Redux](https://img.shields.io/badge/React_Redux-764ABC.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Redux Saga](https://img.shields.io/badge/Redux_Saga-999999.svg?style=for-the-badge&logo=redux-saga&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245.svg?style=for-the-badge&logo=react-router&logoColor=white)
+![Create React App](https://img.shields.io/badge/Create_React_App-09D3AC.svg?style=for-the-badge&logo=create-react-app&logoColor=white)
+![Webpack](https://img.shields.io/badge/Webpack-8DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![Babel](https://img.shields.io/badge/Babel-F9DC3E.svg?style=for-the-badge&logo=babel&logoColor=black)
+![Normalize.css](https://camo.githubusercontent.com/e0c4dc5bbf5e324768c81c587e803e11b3e17c56fd6e2c7dcff7a38b88d3d621/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f726d616c697a652e6373732d4533363935462e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f726d616c697a65646f74637373266c6f676f436f6c6f723d7768697465)
+
 ## ⌨️ Available Scripts
 
 **This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)**.
