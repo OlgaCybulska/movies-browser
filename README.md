@@ -1,36 +1,12 @@
-# Movies Browser
+# 🎥 Movies Browser
 
-Discover a vast collection of movies using our browser. Explore genres, ratings, and cast information.\
-Check it out [**here**](https://olgacybulska.github.io/movies-browser/).
+![Authors](/readme_header.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Discover a vast collection of movies using our **Movie Browser**. Search for movie and people by name, check out ratings, and delve into details about the cast and crew. It's your go-to resource for movie metadata, tailored for the discerning cinephile and tech enthusiast.
 
-## Authors
+## ⌨️ Available Scripts
 
-* Olga Cybulska - [OlgaCybulska](https://github.com/OlgaCybulska).
-* Kacper Wojda - [wojdaSoftware](https://github.com/wojdaSoftware).
-* Oskar Tracz - [traczoskar](https://github.com/traczoskar).
-
-## Technologies
-
-* HTML
-* CSS
-  * Normalize.css
-  * Grid
-  * Flex
-  * Media queries
-  * styled-components
-* Javascript
-  * ES6+ features
-  * create-react-app
-    * React Redux Toolkit
-    * Redux-Saga
-    * React Hooks
-    * Custom Hooks
-
-# Create React App
-
-## Available Scripts
+**This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)**.
 
 In the project directory, you can run:
 
