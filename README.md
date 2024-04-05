@@ -4,6 +4,16 @@
 
 Discover a vast collection of movies using our **Movie Browser**. Search for movie and people by name, check out ratings, and delve into details about the cast and crew. It's your go-to resource for movie metadata, tailored for the discerning cinephile and tech enthusiast.
 
+### Check out Demo [**here**](https://olgacybulska.github.io/movies-browser/) 👈
+
+## ✍️ Authors
+
+![Authors](/readme_authors.png)
+
+- **Olga Cybulska - [OlgaCybulska](https://github.com/OlgaCybulska)**.
+- **Kacper Wojda - [wojdaSoftware](https://github.com/wojdaSoftware)**.
+- **Oskar Tracz - [traczoskar](https://github.com/traczoskar)**.
+
 ## ⌨️ Available Scripts
 
 **This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)**.
