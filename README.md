@@ -29,6 +29,32 @@ Discover a vast collection of movies using our **Movie Browser**. Search for mov
 ![Babel](https://img.shields.io/badge/Babel-F9DC3E.svg?style=for-the-badge&logo=babel&logoColor=black)
 ![Normalize.css](https://camo.githubusercontent.com/e0c4dc5bbf5e324768c81c587e803e11b3e17c56fd6e2c7dcff7a38b88d3d621/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f726d616c697a652e6373732d4533363935462e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f726d616c697a65646f74637373266c6f676f436f6c6f723d7768697465)
 
+## ✅ Features
+
+🔍 **Search Functionality**: Use the search bar to find movies or people based on specific query parameters, making your exploration targeted and efficient.
+
+🌟 **Popular Movie List**: Delve into a handpicked selection of hit movies featured prominently on our main homepage for easy access.
+
+🎬 **Movie Details**: Get an in-depth look at movies by selecting any title from the popular lists to view its comprehensive details.
+
+👥 **People List**: Uncover a roster of actors or crew and dive into individual profiles to learn more about their filmography and details.
+
+🎭 **People Details**: Delve into dedicated pages for actors and crew where you can explore extensive details about their careers and film contributions.
+
+🚶 **Navigation**: Effortlessly move between distinct sections dedicated to movies and people, enabling a structured and comprehensive browsing experience.
+
+📄 **Pagination**: Experience enhanced navigation with pagination. Our app incorporates page-specific URL parameters and offers intuitive navigation buttons—First, Previous, Next, and Last—to streamline your journey through Movie and People Lists.
+
+🖱️ **Enhanced UI - Hover Styling**: Our interface comes alive as you hover over elements like movies, actors, or buttons, providing a dynamic and engaging user interaction.
+
+📱 **Responsiveness**: Enjoy a consistent and fluid experience across a variety of devices, ensuring the app adapts gracefully from mobiles to tablets.
+
+⏳ **Loading Page**: Our app adeptly manages loading sequences, ensuring a smooth and uninterrupted browsing experience.
+
+🆘 **Error Page**: It also handles error notifications efficiently, maintaining a seamless user interaction even when unexpected issues arise.
+
+🚫 **No Results Page**: Encounter a clear and instructive page when searches yield no results, designed to guide users effectively during their quest for movies or people.
+
 ## ⌨️ Available Scripts
 
 **This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)**.
