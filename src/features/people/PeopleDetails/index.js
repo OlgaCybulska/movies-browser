@@ -14,8 +14,8 @@ import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 import { Container } from "../../../common/Container";
 import { DetailTile } from "../../../common/Tile";
 import { GridWrapper } from "../../../common/GridWrapper/styled";
-
 import { Tile } from "../../../common/Tile";
+import { formatRate } from "../../../utils/dataFormatFunctions";
 
 const PeopleDetails = () => {
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const PeopleDetails = () => {
                       title={cast.title}
                       subtitle={cast.release_date}
                       role={cast.character}
-                      rate={cast.vote_average.toFixed(1) || ""}
+                      rate={formatRate(cast.vote_average) || ""}
                       votes={cast.vote_count}
                       link={`/movies/${cast.id}`}
                     />
