@@ -27,7 +27,7 @@ export const StyledMovieTile = styled(Link)`
   }
   &:hover > img:first-child {
     filter: brightness(80%);
-    transition: 0nTile.5s ease;
+    transition: 0.5s ease;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
