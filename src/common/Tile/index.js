@@ -49,7 +49,9 @@ export const Tile = ({
           <Subtitle>
             {movieTile
               ? `${subtitle}`
-              : `${role} (${new Date(subtitle).getFullYear()})`}
+              : `${role} ${
+                  subtitle ? `${new Date(subtitle).getFullYear()}` : ""
+                }`}
           </Subtitle>
           <Genres>
             <GenreTag>Action</GenreTag>
