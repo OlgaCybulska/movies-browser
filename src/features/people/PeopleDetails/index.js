@@ -80,7 +80,7 @@ const PeopleDetails = () => {
                           title={cast.title}
                           subtitle={cast.release_date}
                           role={cast.character}
-                          rate={formatRate(cast.vote_average) || ""}
+                          rate={formatRate(cast.vote_average)}
                           votes={cast.vote_count}
                           link={`/movies/${cast.id}`}
                         />
@@ -106,9 +106,9 @@ const PeopleDetails = () => {
                           movieTile={false}
                           posterPath={crew.poster_path}
                           title={crew.title}
-                          subtitle={crew.year || "No release year available"}
+                          subtitle={crew.release_date}
                           role={crew.job}
-                          rate={crew.vote_average}
+                          rate={formatRate(crew.vote_average)}
                           votes={crew.vote_count}
                           link={`/movies/${crew.id}`}
                         />
