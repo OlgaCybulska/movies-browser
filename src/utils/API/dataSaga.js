@@ -5,7 +5,9 @@ import {
   fetchDataSuccess,
   fetchDataError,
   fetchAdditionalData,
+  fetchGenres,
 } from "./dataSlice";
+import { genresLocalStorageKey, saveInLocalStorage } from "./localStorage";
 
 function* fetchDataHandler(action) {
   try {
@@ -27,13 +29,24 @@ function* fetchAdditionalDataHandler(action) {
       throw new Error();
     }
     yield put(fetchAdditionalData(apiData));
-  } catch (error) {
-  }
+  } catch (error) {}
+}
+
+function* fetchGenresHandler(action) {
+  try {
+    const apiData = yield call(getData, action.payload);
+    if (apiData.success === false) {
+      throw new Error();
+    }
+    yield put(fetchGenres(apiData));
+    yield call(saveInLocalStorage, apiData, genresLocalStorageKey);
+  } catch (error) {}
 }
 
 export function* dataSaga() {
   yield all([
     takeLatest(fetchData.type, fetchDataHandler),
-    takeLatest(fetchAdditionalData.type, fetchAdditionalDataHandler)
-  ])
+    takeLatest(fetchAdditionalData.type, fetchAdditionalDataHandler),
+    takeLatest(fetchGenres.type, fetchGenresHandler),
+  ]);
 }

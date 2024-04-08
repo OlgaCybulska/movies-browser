@@ -30,6 +30,7 @@ export const Tile = ({
   title,
   subtitle,
   rate,
+  genres,
   role,
   votes,
   posterPath,
@@ -50,15 +51,13 @@ export const Tile = ({
             {movieTile
               ? `${subtitle}`
               : `${role} ${
-                  subtitle ? `${new Date(subtitle).getFullYear()}` : ""
+                  subtitle ? `(${new Date(subtitle).getFullYear()})` : ""
                 }`}
           </Subtitle>
           <Genres>
-            <GenreTag>Action</GenreTag>
-            <GenreTag>Adventure</GenreTag>
-            <GenreTag>Drama</GenreTag>
-            <GenreTag>ScienceFiction</GenreTag>
-            <GenreTag>Horror</GenreTag>
+            {genres
+              ? genres.map((genre, id) => <GenreTag key={id}>{genre}</GenreTag>)
+              : ""}
           </Genres>
         </div>
         <Rating rate={rate} votes={votes} />
@@ -88,7 +87,7 @@ export const DetailTile = ({
   subtitle,
   votes,
   posterPath,
-  tags,
+  genres,
   overview,
   isOnMainTile,
   isOnBackdrop,
@@ -127,7 +126,11 @@ export const DetailTile = ({
         {movieTile ? (
           <>
             <Genres>
-              <GenreTag></GenreTag>
+              {genres
+                ? genres.map((genre, id) => (
+                    <GenreTag key={id}>{genre}</GenreTag>
+                  ))
+                : null}
             </Genres>
             <Rating
               votes={votes}
@@ -136,7 +139,9 @@ export const DetailTile = ({
               isOnMainTile={isOnMainTile}
             />
           </>
-        ) : null}
+        ) : (
+          ""
+        )}
       </DetailInfo>
       {overview && <Overview>{overview}</Overview>}
     </StyledDetailTile>

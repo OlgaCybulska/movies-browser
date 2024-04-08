@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as NoMovieSVG } from "../../assets/icons/noMovie.svg";
-import { ReactComponent as NoPersonSVG } from "../../assets/icons/noPerson.svg";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom/cjs/react-router-dom";
+import noMovieIcon from "../../assets/icons/noMovie.svg";
+import noPersonIcon from "../../assets/icons/noPerson.svg";
 
 //---Main containers for the tiles---
 
@@ -146,7 +146,7 @@ export const NoMoviePlaceholder = styled.div`
   background-color: ${({ theme }) => theme.color.silver};
   border-radius: 5px;
   object-fit: cover;
-  background-image: url(${NoMovieSVG});
+  background-image: url(${noMovieIcon});
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28%;
@@ -164,7 +164,7 @@ export const NoPersonPlaceholder = styled.div`
   object-fit: cover;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.color.silver};
-  background-image: url(${NoPersonSVG});
+  background-image: url(${noPersonIcon});
   background-repeat: no-repeat;
   background-position: center;
   grid-area: 1 / 1 / 4 / 2;
@@ -213,7 +213,6 @@ export const Overview = styled.p`
   line-height: 160%;
   margin: 0px;
   grid-area: d;
-  text-align: left;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.laptopMax}px) {
     margin: 16px 0 0 0;
