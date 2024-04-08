@@ -43,7 +43,7 @@ export const MovieList = () => {
         <>
           <Container>
             <Section>
-              <SectionHeader>Popular movies</SectionHeader>
+              <SectionHeader>{query ? `Search results for "${query}"`: "Popular movies"}</SectionHeader>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
