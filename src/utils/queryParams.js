@@ -19,6 +19,14 @@ export const useReplaceQueryParameter = () => {
       searchParams.set(key, value);
     }
 
-    history.push(`${location.pathname}?${searchParams.toString()}`);
+    if (location.pathname.split("/").length > 2) {
+      const newPath = location.pathname.split("/").slice(0, 2).join("/");
+      console.log(newPath)
+      history.push(`${newPath}?${searchParams.toString()}`);
+    } else {
+      history.push(`${location.pathname}?${searchParams.toString()}`);
+    }
+
+    
   };
 };
