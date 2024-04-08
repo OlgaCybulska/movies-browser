@@ -29,7 +29,6 @@ export const MovieList = () => {
   const dataURL = useDataURL(query);
   const genres = useSelector(selectGenres);
 
-
   useEffect(() => {
     dispatch(fetchData(dataURL));
   }, [dataURL, dispatch]);
@@ -54,7 +53,9 @@ export const MovieList = () => {
         <>
           <Container>
             <Section>
-              <SectionHeader>{query ? `Search results for "${query}"`: "Popular movies"}</SectionHeader>
+              <SectionHeader>
+                {query ? `Search results for "${query}"` : "Popular movies"}
+              </SectionHeader>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -63,13 +64,13 @@ export const MovieList = () => {
                 <GridWrapper>
                   {popularMovies.results.length !== 0
                     ? popularMovies.results[0].title &&
-                    popularMovies.results.map((movie) => (
-                      <li key={movie.id}>
-                        <Tile
-                          link={`/movies/${movie.id}`}
-                          posterPath={movie.poster_path}
-                          title={movie.original_title}
-                          genres={
+                      popularMovies.results.map((movie) => (
+                        <li key={movie.id}>
+                          <Tile
+                            link={`/movies/${movie.id}`}
+                            posterPath={movie.poster_path}
+                            title={movie.original_title}
+                            genres={
                               genres.genres &&
                               movie.genre_ids.map(
                                 (id) =>
@@ -77,18 +78,19 @@ export const MovieList = () => {
                                     .name
                               )
                             }
-                          subtitle={formatYear(movie.release_date)}
-                          rate={formatRate(movie.vote_average)}
-                          votes={movie.vote_count}
-                        />
-                      </li>
-                    ))
+                            subtitle={formatYear(movie.release_date)}
+                            movieTile={true}
+                            rate={formatRate(movie.vote_average)}
+                            votes={movie.vote_count}
+                          />
+                        </li>
+                      ))
                     : null}
                 </GridWrapper>
               </motion.div>
             </Section>
           </Container>
-          {popularMovies.total_pages > 1 && (<Pagination />)}
+          {popularMovies.total_pages > 1 && <Pagination />}
         </>
       );
   }
