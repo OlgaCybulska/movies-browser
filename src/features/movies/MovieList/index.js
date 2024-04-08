@@ -9,9 +9,7 @@ import { SectionHeader } from "../../../common/SectionHeader";
 import { GridWrapper } from "../../../common/GridWrapper/styled";
 import { Tile } from "../../../common/Tile";
 import { Pagination } from "../../../common/Pagination";
-
 import { motion } from "framer-motion";
-
 import {
   fetchData,
   selectData,
@@ -54,7 +52,6 @@ export const MovieList = () => {
           <Container>
             <Section>
               <SectionHeader>Popular movies</SectionHeader>
-
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
