@@ -10,4 +10,4 @@ export const formatCountries = (c) => {
   return c.map((country) => country.name).join(", ");
 };
 
-export const formatRate = (r) => r.toFixed(1);
+export const formatRate = (r) => r.toFixed(1).replace(".", ",");
