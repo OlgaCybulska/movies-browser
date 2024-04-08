@@ -63,6 +63,7 @@ export const MovieList = () => {
                       popularMovies.results.map((movie) => (
                         <li key={movie.id}>
                           <Tile
+                            movieTile={true}
                             link={`/movies/${movie.id}`}
                             posterPath={movie.poster_path}
                             title={movie.original_title}
