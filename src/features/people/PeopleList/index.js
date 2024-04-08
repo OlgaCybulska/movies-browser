@@ -12,6 +12,8 @@ import {
 } from "../../../utils/API/dataSlice";
 import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
+import { useQueryParameters } from "../../../utils/queryParams";
+import { searchBarParamName } from "../../../utils/searchBarParamName";
 import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
 import { StyledLink } from "../../../common/Tile/styled";
 import { PersonTile } from "../../../common/Tile";
@@ -19,7 +21,8 @@ import { PersonTile } from "../../../common/Tile";
 const PeopleList = () => {
   const dispatch = useDispatch();
 
-  const dataURL = useDataURL();
+  const query = useQueryParameters(searchBarParamName);
+  const dataURL = useDataURL(query);
   const status = useSelector(selectStatus);
 
   useEffect(() => {
@@ -40,20 +43,19 @@ const PeopleList = () => {
         <>
           <Container>
             <Section>
-              <SectionHeader>Popular people</SectionHeader>
+              <SectionHeader>
+                {query ? `Search results for "${query}"`: "Popular people"}
+              </SectionHeader>
               <SmallGridWrapper>
-                {popularActors.results
-                  ? popularActors.results[0].gender &&
-                    popularActors.results.map((actor) => (
-                      <li key={actor.id}>
-                        <PersonTile
+              {popularActors.results ? popularActors.results[0].gender && popularActors.results.map((actor) => (
+                <li key={actor.id}>
+                  <PersonTile
                           posterPath={actor.profile_path}
                           name={actor.name}
                           id={actor.id}
                         />
-                      </li>
-                    ))
-                  : null}
+                </li>
+              )) : null}
               </SmallGridWrapper>
             </Section>
           </Container>

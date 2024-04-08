@@ -49,8 +49,6 @@ const MovieDetails = () => {
   const crew = additionalData.crew;
   const cast = additionalData.cast;
 
-  console.log("Crew:", crew, "Cast:", cast);
-
   // Rendering logic:
 
   switch (status) {
