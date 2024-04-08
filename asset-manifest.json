@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/movies-browser/static/js/main.1792577c.js",
+    "main.js": "/movies-browser/static/js/main.24255d38.js",
     "static/js/453.4f8818d1.chunk.js": "/movies-browser/static/js/453.4f8818d1.chunk.js",
     "static/media/example_backdrop.jpg": "/movies-browser/static/media/example_backdrop.23d18ad225002d2909af.jpg",
     "static/media/example_person.png": "/movies-browser/static/media/example_person.0fe9bf5bc8ea458f614e.png",
-    "static/media/backdrop-vignette.svg": "/movies-browser/static/media/backdrop-vignette.2033edfd17e598d06a5bc7d751e59a02.svg",
-    "static/media/noPerson.svg": "/movies-browser/static/media/noPerson.101fc37f98982f808863e9f860788a4d.svg",
-    "static/media/shape-star.svg": "/movies-browser/static/media/shape-star.a60a712b1f74f734e6fe6e06fb2ea31c.svg",
+    "static/media/backdrop-vignette.svg": "/movies-browser/static/media/backdrop-vignette.1174004df10cb645cdd9797e05571696.svg",
+    "static/media/noPerson.svg": "/movies-browser/static/media/noPerson.1d7360b5c7590d86e2d0f07dc8a0694d.svg",
+    "static/media/shape-star.svg": "/movies-browser/static/media/shape-star.9d9d3e3b84561a420af5343482f78b29.svg",
     "index.html": "/movies-browser/index.html",
-    "static/media/noMovie.svg": "/movies-browser/static/media/noMovie.46a57e591ffd81db7793cdbcfb4c67f8.svg",
-    "static/media/camera-icon.svg": "/movies-browser/static/media/camera-icon.63449c4464cb80d38017d27d1dc4f5b2.svg",
-    "static/media/vector.svg": "/movies-browser/static/media/vector.1c70613e8417e64297abb694d11e2c11.svg",
-    "static/media/search-icon.svg": "/movies-browser/static/media/search-icon.7920afd0b926ba1235785f5b4ddff2ab.svg",
-    "static/media/icon-spinner.svg": "/movies-browser/static/media/icon-spinner.17b2cd246403596367f2437ec95272ba.svg",
-    "main.1792577c.js.map": "/movies-browser/static/js/main.1792577c.js.map",
+    "static/media/noMovie.svg": "/movies-browser/static/media/noMovie.e261f7ae001b7b597e7532bde3763bb2.svg",
+    "static/media/camera-icon.svg": "/movies-browser/static/media/camera-icon.64519bacc48e8f0f2a39675e55643d9b.svg",
+    "static/media/vector.svg": "/movies-browser/static/media/vector.bfa7140d43b28a30e8ff5faffcf72f62.svg",
+    "static/media/search-icon.svg": "/movies-browser/static/media/search-icon.ed3f24f20cda9bb4e005406a3f864acb.svg",
+    "static/media/icon-spinner.svg": "/movies-browser/static/media/icon-spinner.c5f29646f52eed97faa98a9f6f43ce08.svg",
+    "main.24255d38.js.map": "/movies-browser/static/js/main.24255d38.js.map",
     "453.4f8818d1.chunk.js.map": "/movies-browser/static/js/453.4f8818d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.1792577c.js"
+    "static/js/main.24255d38.js"
   ]
 }
