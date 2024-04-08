@@ -14,7 +14,10 @@ import {
   fetchData,
   selectData,
   selectStatus,
+  selectGenres,
+  fetchGenres,
 } from "../../../utils/API/dataSlice";
+import { genresURL } from "../../../utils/API/apiDataURLs";
 import { formatYear, formatRate } from "../../../utils/dataFormatFunctions";
 import { useQueryParameters } from "../../../utils/queryParams";
 import { searchBarParamName } from "../../../utils/searchBarParamName";
@@ -24,10 +27,18 @@ export const MovieList = () => {
   const query = useQueryParameters(searchBarParamName);
   const status = useSelector(selectStatus);
   const dataURL = useDataURL(query);
+  const genres = useSelector(selectGenres);
+
 
   useEffect(() => {
     dispatch(fetchData(dataURL));
   }, [dataURL, dispatch]);
+
+  useEffect(() => {
+    if (!genres.genres) {
+      dispatch(fetchGenres(genresURL));
+    }
+  });
 
   const popularMovies = useSelector(selectData);
 
@@ -58,6 +69,14 @@ export const MovieList = () => {
                           link={`/movies/${movie.id}`}
                           posterPath={movie.poster_path}
                           title={movie.original_title}
+                          genres={
+                              genres.genres &&
+                              movie.genre_ids.map(
+                                (id) =>
+                                  genres.genres.find((genre) => genre.id === id)
+                                    .name
+                              )
+                            }
                           subtitle={formatYear(movie.release_date)}
                           rate={formatRate(movie.vote_average)}
                           votes={movie.vote_count}

@@ -25,7 +25,17 @@ import {
 import { posterURL } from "../../utils/API/apiDataURLs";
 import Rating from "../Rating";
 
-export const Tile = ({ title, subtitle, rate, votes, posterPath, link }) => {
+export const Tile = ({
+  movieTile,
+  title,
+  subtitle,
+  rate,
+  genres,
+  role,
+  votes,
+  posterPath,
+  link,
+}) => {
   return (
     <StyledMovieTile to={link}>
       {posterPath ? (
@@ -37,13 +47,17 @@ export const Tile = ({ title, subtitle, rate, votes, posterPath, link }) => {
       <MovieInfo>
         <div>
           <MovieTitle>{title}</MovieTitle>
-          <Subtitle>{subtitle}</Subtitle>
+          <Subtitle>
+            {movieTile
+              ? `${subtitle}`
+              : `${role} ${
+                  subtitle ? `(${new Date(subtitle).getFullYear()})` : ""
+                }`}
+          </Subtitle>
           <Genres>
-            <GenreTag>Action</GenreTag>
-            <GenreTag>Adventure</GenreTag>
-            <GenreTag>Drama</GenreTag>
-            <GenreTag>ScienceFiction</GenreTag>
-            <GenreTag>Horror</GenreTag>
+            {genres
+              ? genres.map((genre, id) => <GenreTag key={id}>{genre}</GenreTag>)
+              : ""}
           </Genres>
         </div>
         <Rating rate={rate} votes={votes} />
@@ -67,12 +81,13 @@ export const PersonTile = ({ posterPath, name, subtitle, id }) => {
 };
 
 export const DetailTile = ({
+  movieTile,
+  rate,
   title,
   subtitle,
-  rate,
   votes,
   posterPath,
-  tags,
+  genres,
   overview,
   isOnMainTile,
   isOnBackdrop,
@@ -82,7 +97,7 @@ export const DetailTile = ({
   return (
     <StyledDetailTile>
       {posterPath ? (
-        <DetailTilePoster src={posterPath} alt="Poster" />
+        <DetailTilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
       ) : (
         <NoMoviePlaceholder />
       )}
@@ -92,28 +107,41 @@ export const DetailTile = ({
         {firstData && (
           <AboutContainer>
             <AboutContent>
-              <AboutTitle>Production:</AboutTitle>
+              <AboutTitle>
+                {" "}
+                {movieTile ? `Production: ` : `Date of birth: `}
+              </AboutTitle>
               {firstData}
             </AboutContent>
             <AboutContent>
-              <AboutTitle>Release date:</AboutTitle>
+              <AboutTitle>
+                {" "}
+                {movieTile ? `Release date: ` : `Place of birth: `}
+              </AboutTitle>
               {secondData}
             </AboutContent>
           </AboutContainer>
         )}
-        <>
-          <Genres>
-            {tags.map(({ name }) => (
-              <GenreTag key={name}>{name}</GenreTag>
-            ))}
-          </Genres>
-          <Rating
-            votes={votes}
-            rate={rate}
-            isOnBackdrop={isOnBackdrop}
-            isOnMainTile={isOnMainTile}
-          />
-        </>
+
+        {movieTile ? (
+          <>
+            <Genres>
+              {genres
+                ? genres.map((genre, id) => (
+                    <GenreTag key={id}>{genre}</GenreTag>
+                  ))
+                : null}
+            </Genres>
+            <Rating
+              votes={votes}
+              rate={rate}
+              isOnBackdrop={isOnBackdrop}
+              isOnMainTile={isOnMainTile}
+            />
+          </>
+        ) : (
+          ""
+        )}
       </DetailInfo>
       {overview && <Overview>{overview}</Overview>}
     </StyledDetailTile>

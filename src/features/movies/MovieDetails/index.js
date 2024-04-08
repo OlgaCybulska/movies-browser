@@ -73,6 +73,7 @@ const MovieDetails = () => {
           <Container>
             {movieDetails.poster_path && (
               <DetailTile
+                movieTile={true}
                 posterPath={`${posterURL}${movieDetails.poster_path}`}
                 title={movieDetails.title}
                 subtitle={formatYear(movieDetails.release_date)}
