@@ -15,19 +15,13 @@ import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
 import { Container } from "../../../common/Container";
 import BackdropSection from "./Backdrop";
-import examplePerson from "../../../assets/example_person.png";
 import {
   formatCountries,
   formatDate,
   formatRate,
   formatYear,
 } from "../../../utils/dataFormatFunctions";
-import {
-  ActorTile,
-  DetailTile,
-  PersonTile,
-  SmallTile,
-} from "../../../common/Tile";
+import { DetailTile, PersonTile } from "../../../common/Tile";
 import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
 
