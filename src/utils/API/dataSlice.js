@@ -34,10 +34,7 @@ export const {
   fetchDataSuccess,
   fetchDataError,
   fetchAdditionalData,
-
   fetchGenres,
-
-
 } = dataSlice.actions;
 
 const selectDataState = (state) => state.data;
