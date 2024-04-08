@@ -6,7 +6,6 @@ import { AnimatedLoader, LoaderContainer, StyledSectionHeader } from "./styled";
 
 const LoadingPage = () => {
   const query = useQueryParameters(searchBarParamName);
-  console.log(query);
 
   return (
     <Container>

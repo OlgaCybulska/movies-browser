@@ -21,7 +21,6 @@ const SearchBar = () => {
 
   useEffect(() => {
     if (query.trim() !== "") {
-      console.log(dataURL);
       dispatch(fetchData(dataURL));
     }
   }, [dataURL, query, dispatch]);
