@@ -100,7 +100,7 @@ const MovieDetails = () => {
                 }
                 isOnBackdrop={false}
                 isOnMainTile={true}
-                overview={movieDetails.overview || "No overview available"}
+                overview={movieDetails.overview}
               />
             )}
 
