@@ -15,7 +15,7 @@ import { Container } from "../../../common/Container";
 import { DetailTile } from "../../../common/Tile";
 import { GridWrapper } from "../../../common/GridWrapper/styled";
 import { Tile } from "../../../common/Tile";
-import { formatRate } from "../../../utils/dataFormatFunctions";
+import { formatRate, formatDate } from "../../../utils/dataFormatFunctions";
 import LoadingPage from ".././../../common/LoadingPage";
 import ErrorPage from ".././../../common/ErrorPage";
 
@@ -48,17 +48,23 @@ const PeopleDetails = () => {
         <>
           <Section>
             <Container>
-              <DetailTile
-                posterPath={peopleDetails.profile_path}
-                title={peopleDetails.name}
-                firstData={
-                  peopleDetails.birthday || "No date of birth available"
-                }
-                secondData={
-                  peopleDetails.place_of_birth || "No place of birth available"
-                }
-                overview={peopleDetails.biography || "No biography available"}
-              />
+              {peopleDetails && (
+                <DetailTile
+                  movieTile={false}
+                  posterPath={peopleDetails.profile_path}
+                  title={peopleDetails.name}
+                  firstData={
+                    peopleDetails.birthday
+                      ? formatDate(peopleDetails.birthday)
+                      : "No date of birth available"
+                  }
+                  secondData={
+                    peopleDetails.place_of_birth ||
+                    "No place of birth available"
+                  }
+                  overview={peopleDetails.biography || "No biography available"}
+                />
+              )}
             </Container>
           </Section>
 
@@ -80,7 +86,9 @@ const PeopleDetails = () => {
                           title={cast.title}
                           subtitle={cast.release_date}
                           role={cast.character}
-                          rate={formatRate(cast.vote_average)}
+                          rate={
+                            cast.vote_average && formatRate(cast.vote_average)
+                          }
                           votes={cast.vote_count}
                           link={`/movies/${cast.id}`}
                         />
@@ -95,7 +103,7 @@ const PeopleDetails = () => {
               <SectionHeader>
                 {crews
                   ? `Movies - crew (${crews.length})`
-                  : "Movies - crew (0)"}{" "}
+                  : "Movies - crew (0)"}
               </SectionHeader>
               <GridWrapper>
                 {crews
@@ -108,7 +116,9 @@ const PeopleDetails = () => {
                           title={crew.title}
                           subtitle={crew.release_date}
                           role={crew.job}
-                          rate={formatRate(crew.vote_average)}
+                          rate={
+                            crew.vote_average && formatRate(crew.vote_average)
+                          }
                           votes={crew.vote_count}
                           link={`/movies/${crew.id}`}
                         />

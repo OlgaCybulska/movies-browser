@@ -39,7 +39,7 @@ const PeopleList = () => {
     case "error":
       return <ErrorPage />;
     case "success":
-      if (popularActors.results.length !== 0) {
+      if (popularActors.results && popularActors.results.length !== 0) {
         return (
           <>
             <Container>
@@ -48,8 +48,7 @@ const PeopleList = () => {
                   {query ? `Search results for "${query}"` : "Popular people"}
                 </SectionHeader>
                 <SmallGridWrapper>
-                  {popularActors.results
-                    ? popularActors.results[0].gender &&
+                  {popularActors.results[0].name &&
                     popularActors.results.map((actor) => (
                       <li key={actor.id}>
                         <PersonTile
@@ -58,8 +57,7 @@ const PeopleList = () => {
                           id={actor.id}
                         />
                       </li>
-                    ))
-                    : null}
+                    ))}
                 </SmallGridWrapper>
               </Section>
             </Container>
@@ -67,9 +65,8 @@ const PeopleList = () => {
           </>
         );
       } else {
-        return (<NoResultsPage />)
+        return <NoResultsPage />;
       }
-
   }
 };
 
