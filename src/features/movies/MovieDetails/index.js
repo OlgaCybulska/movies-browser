@@ -71,26 +71,36 @@ const MovieDetails = () => {
             {movieDetails && (
               <DetailTile
                 movieTile={true}
-                posterPath={`${posterURL}${movieDetails.poster_path}`}
+                posterPath={
+                  movieDetails.poster_path &&
+                  `${posterURL}${movieDetails.poster_path}`
+                }
                 title={movieDetails.title}
                 subtitle={
-                  movieDetails.release_date &&
-                  formatYear(movieDetails.release_date)
+                  movieDetails.release_date
+                    ? formatYear(movieDetails.release_date)
+                    : "No release year available"
                 }
                 firstData={
-                  movieDetails.production_countries &&
-                  formatCountries(movieDetails.production_countries)
+                  movieDetails.production_countries
+                    ? formatCountries(movieDetails.production_countries)
+                    : "No production countries available"
                 }
                 tags={movieDetails.genres}
                 secondData={
-                  movieDetails.release_date &&
-                  formatDate(movieDetails.release_date)
+                  movieDetails.release_date
+                    ? formatDate(movieDetails.release_date)
+                    : "No release date available"
                 }
-                votes={movieDetails.vote_count}
-                rate={formatRate(movieDetails.vote_average)}
+                votes={movieDetails.vote_count || "No votes yet"}
+                rate={
+                  movieDetails.vote_average
+                    ? formatRate(movieDetails.vote_average)
+                    : "No rate available"
+                }
                 isOnBackdrop={false}
                 isOnMainTile={true}
-                overview={movieDetails.overview}
+                overview={movieDetails.overview || "No overview available"}
               />
             )}
 
