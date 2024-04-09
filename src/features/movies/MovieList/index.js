@@ -62,14 +62,14 @@ export const MovieList = () => {
                 transition={{ duration: 0.75 }}
               >
                 <GridWrapper>
-                  {popularMovies.results.length !== 0
+                  {popularMovies && popularMovies.results.length !== 0
                     ? popularMovies.results[0].title &&
                       popularMovies.results.map((movie) => (
                         <li key={movie.id}>
                           <Tile
                             link={`/movies/${movie.id}`}
                             posterPath={movie.poster_path}
-                            title={movie.original_title}
+                            title={movie.original_title || "No title available"}
                             genres={
                               genres.genres &&
                               movie.genre_ids.map(
@@ -78,10 +78,18 @@ export const MovieList = () => {
                                     .name
                               )
                             }
-                            subtitle={formatYear(movie.release_date)}
+                            subtitle={
+                              movie.release_date
+                                ? formatYear(movie.release_date)
+                                : "No release date available"
+                            }
                             movieTile={true}
-                            rate={formatRate(movie.vote_average)}
-                            votes={movie.vote_count}
+                            rate={
+                              movie.vote_average
+                                ? formatRate(movie.vote_average)
+                                : "No rate available"
+                            }
+                            votes={movie.vote_count || "No votes yet"}
                           />
                         </li>
                       ))
