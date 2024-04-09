@@ -100,24 +100,24 @@ export const DetailTile = ({
     <StyledDetailTile>
       {posterPath ? (
         <DetailTilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
-      ) : (
+      ) : movieTile ? (
         <NoMoviePlaceholder />
+      ) : (
+        <NoPersonPlaceholder />
       )}
       <DetailInfo>
         <DetailMovieTitle>{title}</DetailMovieTitle>
-        {title && <DetailSubtitle>{subtitle}</DetailSubtitle>}
+        {subtitle && <DetailSubtitle>{subtitle}</DetailSubtitle>}
         {firstData && (
           <AboutContainer>
             <AboutContent>
               <AboutTitle>
-                {" "}
                 {movieTile ? `Production: ` : `Date of birth: `}
               </AboutTitle>
               {firstData}
             </AboutContent>
             <AboutContent>
               <AboutTitle>
-                {" "}
                 {movieTile ? `Release date: ` : `Place of birth: `}
               </AboutTitle>
               {secondData}
@@ -134,12 +134,14 @@ export const DetailTile = ({
                   ))
                 : null}
             </Genres>
-            <Rating
-              votes={votes}
-              rate={rate}
-              isOnBackdrop={isOnBackdrop}
-              isOnMainTile={isOnMainTile}
-            />
+            {rate && (
+              <Rating
+                votes={votes}
+                rate={rate}
+                isOnBackdrop={isOnBackdrop}
+                isOnMainTile={isOnMainTile}
+              />
+            )}
           </>
         ) : (
           ""

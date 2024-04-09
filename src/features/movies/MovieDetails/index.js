@@ -60,20 +60,32 @@ const MovieDetails = () => {
               backgroundURL={`${backdropURL}${movieDetails.backdrop_path}`}
               title={movieDetails.title}
               votes={movieDetails.vote_count}
-              rate={formatRate(movieDetails.vote_average)}
+              rate={
+                movieDetails.vote_average &&
+                formatRate(movieDetails.vote_average)
+              }
             />
           )}
 
           <Container>
-            {movieDetails.poster_path && (
+            {movieDetails && (
               <DetailTile
                 movieTile={true}
                 posterPath={`${posterURL}${movieDetails.poster_path}`}
                 title={movieDetails.title}
-                subtitle={formatYear(movieDetails.release_date)}
-                firstData={formatCountries(movieDetails.production_countries)}
+                subtitle={
+                  movieDetails.release_date &&
+                  formatYear(movieDetails.release_date)
+                }
+                firstData={
+                  movieDetails.production_countries &&
+                  formatCountries(movieDetails.production_countries)
+                }
                 tags={movieDetails.genres}
-                secondData={formatDate(movieDetails.release_date)}
+                secondData={
+                  movieDetails.release_date &&
+                  formatDate(movieDetails.release_date)
+                }
                 votes={movieDetails.vote_count}
                 rate={formatRate(movieDetails.vote_average)}
                 isOnBackdrop={false}
