@@ -48,18 +48,16 @@ const PeopleList = () => {
                   {query ? `Search results for "${query}"` : "Popular people"}
                 </SectionHeader>
                 <SmallGridWrapper>
-                  {popularActors.results
-                    ? popularActors.results[0].gender &&
-                      popularActors.results.map((actor) => (
-                        <li key={actor.id}>
-                          <PersonTile
-                            posterPath={actor.profile_path}
-                            name={actor.name}
-                            id={actor.id}
-                          />
-                        </li>
-                      ))
-                    : null}
+                  {popularActors.results[0].name &&
+                    popularActors.results.map((actor) => (
+                      <li key={actor.id}>
+                        <PersonTile
+                          posterPath={actor.profile_path}
+                          name={actor.name}
+                          id={actor.id}
+                        />
+                      </li>
+                    ))}
                 </SmallGridWrapper>
               </Section>
             </Container>
