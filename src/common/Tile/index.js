@@ -41,7 +41,9 @@ export const Tile = ({
       {posterPath ? (
         <TilePoster src={`${posterURL}${posterPath}`} alt="Poster" />
       ) : (
-        <NoMoviePlaceholder />
+        <div>
+          <NoMoviePlaceholder />
+        </div>
       )}
 
       <MovieInfo>

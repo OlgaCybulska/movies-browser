@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { maxPageNumber } from "../../utils/maxPageNumber";
+import { useMaxPageNumber } from "../../utils/useMaxPageNumber";
 import {
   Button,
   TextBold,
@@ -17,6 +17,7 @@ import { selectPage, setPage } from "./paginationSlice";
 export const Pagination = () => {
   const page = useSelector(selectPage);
   const dispatch = useDispatch();
+  const maxPageNumber = useMaxPageNumber();
 
   return (
     <Wrapper>

@@ -15,19 +15,13 @@ import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
 import { Container } from "../../../common/Container";
 import BackdropSection from "./Backdrop";
-import examplePerson from "../../../assets/example_person.png";
 import {
   formatCountries,
   formatDate,
   formatRate,
   formatYear,
 } from "../../../utils/dataFormatFunctions";
-import {
-  ActorTile,
-  DetailTile,
-  PersonTile,
-  SmallTile,
-} from "../../../common/Tile";
+import { DetailTile, PersonTile } from "../../../common/Tile";
 import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
 
@@ -48,8 +42,6 @@ const MovieDetails = () => {
   const additionalData = useSelector(selectAdditionalData);
   const crew = additionalData.crew;
   const cast = additionalData.cast;
-
-  console.log("Crew:", crew, "Cast:", cast);
 
   // Rendering logic:
 
@@ -80,8 +72,8 @@ const MovieDetails = () => {
                 title={movieDetails.title}
                 subtitle={formatYear(movieDetails.release_date)}
                 firstData={formatCountries(movieDetails.production_countries)}
-                tags={movieDetails.genres}
                 secondData={formatDate(movieDetails.release_date)}
+                genres={movieDetails.genres.map((genre) => genre.name)}
                 votes={movieDetails.vote_count}
                 rate={formatRate(movieDetails.vote_average)}
                 isOnBackdrop={false}

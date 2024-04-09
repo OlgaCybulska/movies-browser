@@ -19,12 +19,14 @@ import {
 } from "../../../utils/API/dataSlice";
 import { genresURL } from "../../../utils/API/apiDataURLs";
 import { formatYear, formatRate } from "../../../utils/dataFormatFunctions";
+import { useQueryParameters } from "../../../utils/queryParams";
+import { searchBarParamName } from "../../../utils/searchBarParamName";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-
+  const query = useQueryParameters(searchBarParamName);
   const status = useSelector(selectStatus);
-  const dataURL = useDataURL();
+  const dataURL = useDataURL(query);
   const genres = useSelector(selectGenres);
 
   useEffect(() => {
@@ -51,14 +53,16 @@ export const MovieList = () => {
         <>
           <Container>
             <Section>
-              <SectionHeader>Popular movies</SectionHeader>
+              <SectionHeader>
+                {query ? `Search results for "${query}"` : "Popular movies"}
+              </SectionHeader>
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.75 }}
               >
                 <GridWrapper>
-                  {popularMovies.results
+                  {popularMovies.results.length !== 0
                     ? popularMovies.results[0].title &&
                       popularMovies.results.map((movie) => (
                         <li key={movie.id}>
@@ -76,6 +80,7 @@ export const MovieList = () => {
                               )
                             }
                             subtitle={formatYear(movie.release_date)}
+                            movieTile={true}
                             rate={formatRate(movie.vote_average)}
                             votes={movie.vote_count}
                           />
@@ -86,7 +91,7 @@ export const MovieList = () => {
               </motion.div>
             </Section>
           </Container>
-          <Pagination />
+          {popularMovies.total_pages > 1 && <Pagination />}
         </>
       );
   }

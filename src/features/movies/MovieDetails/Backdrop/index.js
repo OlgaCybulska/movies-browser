@@ -7,7 +7,6 @@ import {
   BackdropContainer,
 } from "./styled";
 import Rating from "../../../../common/Rating";
-import backdropPicture from "../../../../assets/example_backdrop.jpg";
 
 const BackdropSection = ({ backgroundURL, title, votes, rate }) => (
   <BackdropContainer>
