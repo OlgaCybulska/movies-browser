@@ -50,7 +50,7 @@ export const MovieList = () => {
     case "error":
       return <ErrorPage />;
     case "success":
-      if (popularMovies && popularMovies.results.length !== 0) {
+      if (popularMovies.results && popularMovies.results.length !== 0) {
         return (
           <>
             <Container>
