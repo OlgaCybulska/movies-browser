@@ -24,6 +24,7 @@ import {
 } from "./styled";
 import { posterURL } from "../../utils/API/apiDataURLs";
 import Rating from "../Rating";
+import { formatYear } from "../../utils/dataFormatFunctions";
 
 export const Tile = ({
   movieTile,
@@ -52,9 +53,7 @@ export const Tile = ({
           <Subtitle>
             {movieTile
               ? `${subtitle}`
-              : `${role} ${
-                  subtitle ? `(${new Date(subtitle).getFullYear()})` : ""
-                }`}
+              : `${role} ${subtitle ? `(${formatYear(subtitle)})` : ""}`}
           </Subtitle>
           <Genres>
             {genres
