@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { SectionHeader } from "../SectionHeader";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 export const ErrorContainer = styled.section`
   display: flex;
@@ -53,6 +54,10 @@ export const ErrorSubHeader = styled.h3`
     font-size: 14px;
     padding-bottom: 8px;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export const Button = styled.button`
