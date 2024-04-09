@@ -21,6 +21,7 @@ import { genresURL } from "../../../utils/API/apiDataURLs";
 import { formatYear, formatRate } from "../../../utils/dataFormatFunctions";
 import { useQueryParameters } from "../../../utils/queryParams";
 import { searchBarParamName } from "../../../utils/searchBarParamName";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
@@ -49,21 +50,22 @@ export const MovieList = () => {
     case "error":
       return <ErrorPage />;
     case "success":
-      return (
-        <>
-          <Container>
-            <Section>
-              <SectionHeader>
-                {query ? `Search results for "${query}"` : "Popular movies"}
-              </SectionHeader>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.75 }}
-              >
-                <GridWrapper>
-                  {popularMovies.results.length !== 0
-                    ? popularMovies.results[0].title &&
+      if (popularMovies.results.length !== 0) {
+        return (
+          <>
+            <Container>
+              <Section>
+                <SectionHeader>
+                  {query ? `Search results for "${query}"` : "Popular movies"}
+                </SectionHeader>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.75 }}
+                >
+                  <GridWrapper>
+                    {popularMovies.results.length !== 0
+                      ? popularMovies.results[0].title &&
                       popularMovies.results.map((movie) => (
                         <li key={movie.id}>
                           <Tile
@@ -85,13 +87,17 @@ export const MovieList = () => {
                           />
                         </li>
                       ))
-                    : null}
-                </GridWrapper>
-              </motion.div>
-            </Section>
-          </Container>
-          {popularMovies.total_pages > 1 && <Pagination />}
-        </>
-      );
+                      : <NoResultsPage />}
+                  </GridWrapper>
+                </motion.div>
+              </Section>
+            </Container>
+            {popularMovies.total_pages > 1 && <Pagination />}
+          </>
+        );
+      } else {
+        return (<NoResultsPage />)
+      }
+
   }
 };

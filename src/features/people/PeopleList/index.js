@@ -16,6 +16,7 @@ import { useQueryParameters } from "../../../utils/queryParams";
 import { searchBarParamName } from "../../../utils/searchBarParamName";
 import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
 import { PersonTile } from "../../../common/Tile";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 const PeopleList = () => {
   const dispatch = useDispatch();
@@ -38,16 +39,17 @@ const PeopleList = () => {
     case "error":
       return <ErrorPage />;
     case "success":
-      return (
-        <>
-          <Container>
-            <Section>
-              <SectionHeader>
-                {query ? `Search results for "${query}"` : "Popular people"}
-              </SectionHeader>
-              <SmallGridWrapper>
-                {popularActors.results
-                  ? popularActors.results[0].gender &&
+      if (popularActors.results.length !== 0) {
+        return (
+          <>
+            <Container>
+              <Section>
+                <SectionHeader>
+                  {query ? `Search results for "${query}"` : "Popular people"}
+                </SectionHeader>
+                <SmallGridWrapper>
+                  {popularActors.results
+                    ? popularActors.results[0].gender &&
                     popularActors.results.map((actor) => (
                       <li key={actor.id}>
                         <PersonTile
@@ -57,13 +59,17 @@ const PeopleList = () => {
                         />
                       </li>
                     ))
-                  : null}
-              </SmallGridWrapper>
-            </Section>
-          </Container>
-          <Pagination />
-        </>
-      );
+                    : null}
+                </SmallGridWrapper>
+              </Section>
+            </Container>
+            <Pagination />
+          </>
+        );
+      } else {
+        return (<NoResultsPage />)
+      }
+
   }
 };
 
