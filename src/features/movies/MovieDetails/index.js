@@ -15,19 +15,13 @@ import { useAdditionalDataURL } from "../../../utils/API/useAdditionalDataURL";
 import { SmallGridWrapper } from "../../../common/GridWrapper/styled";
 import { Container } from "../../../common/Container";
 import BackdropSection from "./Backdrop";
-import examplePerson from "../../../assets/example_person.png";
 import {
   formatCountries,
   formatDate,
   formatRate,
   formatYear,
 } from "../../../utils/dataFormatFunctions";
-import {
-  ActorTile,
-  DetailTile,
-  PersonTile,
-  SmallTile,
-} from "../../../common/Tile";
+import { DetailTile, PersonTile } from "../../../common/Tile";
 import LoadingPage from "../../../common/LoadingPage";
 import ErrorPage from "../../../common/ErrorPage";
 
@@ -49,8 +43,6 @@ const MovieDetails = () => {
   const crew = additionalData.crew;
   const cast = additionalData.cast;
 
-  console.log("Crew:", crew, "Cast:", cast);
-
   // Rendering logic:
 
   switch (status) {
@@ -68,22 +60,44 @@ const MovieDetails = () => {
               backgroundURL={`${backdropURL}${movieDetails.backdrop_path}`}
               title={movieDetails.title}
               votes={movieDetails.vote_count}
-              rate={formatRate(movieDetails.vote_average)}
+              rate={
+                movieDetails.vote_average &&
+                formatRate(movieDetails.vote_average)
+              }
             />
           )}
 
           <Container>
-            {movieDetails.poster_path && (
+            {movieDetails && (
               <DetailTile
                 movieTile={true}
-                posterPath={`${posterURL}${movieDetails.poster_path}`}
+                posterPath={
+                  movieDetails.poster_path &&
+                  `${posterURL}${movieDetails.poster_path}`
+                }
                 title={movieDetails.title}
-                subtitle={formatYear(movieDetails.release_date)}
-                firstData={formatCountries(movieDetails.production_countries)}
+                subtitle={
+                  movieDetails.release_date
+                    ? formatYear(movieDetails.release_date)
+                    : "No release year available"
+                }
+                firstData={
+                  movieDetails.production_countries
+                    ? formatCountries(movieDetails.production_countries)
+                    : "No production countries available"
+                }
                 tags={movieDetails.genres}
-                secondData={formatDate(movieDetails.release_date)}
-                votes={movieDetails.vote_count}
-                rate={formatRate(movieDetails.vote_average)}
+                secondData={
+                  movieDetails.release_date
+                    ? formatDate(movieDetails.release_date)
+                    : "No release date available"
+                }
+                votes={movieDetails.vote_count || "No votes yet"}
+                rate={
+                  movieDetails.vote_average
+                    ? formatRate(movieDetails.vote_average)
+                    : "No rate available"
+                }
                 isOnBackdrop={false}
                 isOnMainTile={true}
                 overview={movieDetails.overview}

@@ -3,6 +3,7 @@ import {
   ErrorContainer,
   ErrorSubHeader,
   StyledErrorIcon,
+  StyledLink,
   StyledSectionHeader,
 } from "./styled";
 import errorIcon from "../../assets/error.png";
@@ -17,7 +18,9 @@ const ErrorPage = () => {
         <br />
         and try again
       </ErrorSubHeader>
-      <Button>Back to home page</Button>
+      <StyledLink to="/movies-browser#/movies">
+        <Button>Back to home page</Button>
+      </StyledLink>
     </ErrorContainer>
   );
 };

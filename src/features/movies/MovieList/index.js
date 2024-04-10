@@ -19,12 +19,15 @@ import {
 } from "../../../utils/API/dataSlice";
 import { genresURL } from "../../../utils/API/apiDataURLs";
 import { formatYear, formatRate } from "../../../utils/dataFormatFunctions";
+import { useQueryParameters } from "../../../utils/queryParams";
+import { searchBarParamName } from "../../../utils/searchBarParamName";
+import NoResultsPage from "../../../common/NoResultsPage";
 
 export const MovieList = () => {
   const dispatch = useDispatch();
-
+  const query = useQueryParameters(searchBarParamName);
   const status = useSelector(selectStatus);
-  const dataURL = useDataURL();
+  const dataURL = useDataURL(query);
   const genres = useSelector(selectGenres);
 
   useEffect(() => {
@@ -47,26 +50,28 @@ export const MovieList = () => {
     case "error":
       return <ErrorPage />;
     case "success":
-      return (
-        <>
-          <Container>
-            <Section>
-              <SectionHeader>Popular movies</SectionHeader>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.75 }}
-              >
-                <GridWrapper>
-                  {popularMovies.results
-                    ? popularMovies.results[0].title &&
+      if (popularMovies.results && popularMovies.results.length !== 0) {
+        return (
+          <>
+            <Container>
+              <Section>
+                <SectionHeader>
+                  {query ? `Search results for "${query}"` : "Popular movies"}
+                </SectionHeader>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.75 }}
+                >
+                  <GridWrapper>
+                    {popularMovies.results[0].title &&
                       popularMovies.results.map((movie) => (
                         <li key={movie.id}>
                           <Tile
                             movieTile={true}
                             link={`/movies/${movie.id}`}
                             posterPath={movie.poster_path}
-                            title={movie.original_title}
+                            title={movie.original_title || "No title available"}
                             genres={
                               genres.genres &&
                               movie.genre_ids.map(
@@ -75,19 +80,30 @@ export const MovieList = () => {
                                     .name
                               )
                             }
-                            subtitle={formatYear(movie.release_date)}
-                            rate={formatRate(movie.vote_average)}
-                            votes={movie.vote_count}
+                            subtitle={
+                              movie.release_date
+                                ? formatYear(movie.release_date)
+                                : "No release date available"
+                            }
+                            movieTile={true}
+                            rate={
+                              movie.vote_average
+                                ? formatRate(movie.vote_average)
+                                : "No rate available"
+                            }
+                            votes={movie.vote_count || "No votes yet"}
                           />
                         </li>
-                      ))
-                    : null}
-                </GridWrapper>
-              </motion.div>
-            </Section>
-          </Container>
-          <Pagination />
-        </>
-      );
+                      ))}
+                  </GridWrapper>
+                </motion.div>
+              </Section>
+            </Container>
+            {popularMovies.total_pages > 1 && <Pagination />}
+          </>
+        );
+      } else {
+        return <NoResultsPage />;
+      }
   }
 };
