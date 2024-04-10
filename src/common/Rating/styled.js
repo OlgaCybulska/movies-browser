@@ -6,7 +6,7 @@ import { ReactComponent as StarIcon } from "../../assets/icons/shape-star.svg";
 export const RatingContainer = styled.div`
   margin: 10px 0 0;
   display: flex;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: nowrap;
   align-items: center;
 
@@ -150,6 +150,7 @@ export const Votes = styled.span`
   ${({ $mainTile }) =>
     $mainTile &&
     css`
+      margin-left: 4px;
       margin-top: 9px;
       font-size: 14px;
       line-height: 1.2;
