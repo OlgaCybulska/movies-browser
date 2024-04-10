@@ -86,7 +86,11 @@ const MovieDetails = () => {
                     ? formatCountries(movieDetails.production_countries)
                     : "No production countries available"
                 }
-                tags={movieDetails.genres}
+                genres={
+                  movieDetails.genres
+                    ? movieDetails.genres.map((genre) => genre.name)
+                    : ""
+                }
                 secondData={
                   movieDetails.release_date
                     ? formatDate(movieDetails.release_date)

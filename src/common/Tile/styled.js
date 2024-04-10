@@ -77,6 +77,7 @@ export const StyledPersonTile = styled(Link)`
 export const StyledDetailTile = styled.article`
   margin-top: 64px;
   background: white;
+  color: ${({ theme }) => theme.color.black};
   padding: 40px;
   display: grid;
   justify-items: center;
