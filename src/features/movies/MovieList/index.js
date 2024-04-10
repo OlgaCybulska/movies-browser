@@ -85,7 +85,6 @@ export const MovieList = () => {
                                 ? formatYear(movie.release_date)
                                 : "No release date available"
                             }
-                            movieTile={true}
                             rate={
                               movie.vote_average
                                 ? formatRate(movie.vote_average)
