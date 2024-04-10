@@ -108,7 +108,11 @@ export const DetailTile = ({
       )}
       <DetailInfo>
         <DetailMovieTitle>{title}</DetailMovieTitle>
-        {subtitle && <DetailSubtitle>{subtitle}</DetailSubtitle>}
+        {subtitle && (
+          <DetailSubtitle $movieDetails={isOnMovieDetails}>
+            {subtitle}
+          </DetailSubtitle>
+        )}
         {firstData && (
           <AboutContainer>
             <AboutContent>
@@ -141,6 +145,7 @@ export const DetailTile = ({
                 rate={rate}
                 isOnBackdrop={isOnBackdrop}
                 isOnMainTile={isOnMainTile}
+                isOnMovieDetails={isOnMovieDetails}
               />
             )}
           </>
