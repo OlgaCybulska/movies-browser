@@ -19,6 +19,12 @@ export const RatingContainer = styled.div`
       gap: 8px;
     `}
 
+  ${({ $movieDetails }) =>
+    $movieDetails &&
+    css`
+      margin: 0;
+    `}
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     height: 30px;
     margin-top: 0;
