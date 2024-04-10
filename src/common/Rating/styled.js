@@ -6,7 +6,7 @@ import { ReactComponent as StarIcon } from "../../assets/icons/shape-star.svg";
 export const RatingContainer = styled.div`
   margin: 10px 0 0;
   display: flex;
-  gap: 8px;
+  gap: 12px;
   flex-wrap: nowrap;
   align-items: center;
 
@@ -22,6 +22,7 @@ export const RatingContainer = styled.div`
   ${({ $movieDetails }) =>
     $movieDetails &&
     css`
+      gap: 8px;
       margin: 0;
     `}
 
