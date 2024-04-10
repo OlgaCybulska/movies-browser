@@ -374,6 +374,21 @@ export const Genres = styled.ul`
   align-items: flex-start;
   gap: 8px;
   flex-wrap: wrap;
+
+  ${({ $movieDetails }) =>
+    $movieDetails &&
+    css`
+      gap: 16px;
+      margin: 0 0 0 0;
+    `}
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.largeMobileMax}px) {
+    ${({ $movieDetails }) =>
+      $movieDetails &&
+      css`
+        gap: 8px;
+      `}
+  }
 `;
 
 export const GenreTag = styled.li`
