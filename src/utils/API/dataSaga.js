@@ -1,4 +1,4 @@
-import { call, delay, put, takeLatest, all, debounce } from "redux-saga/effects";
+import { call, put, takeLatest, all, debounce } from "redux-saga/effects";
 import { getData } from "./getData";
 import {
   fetchData,
@@ -12,7 +12,6 @@ import { genresLocalStorageKey, saveInLocalStorage } from "./localStorage";
 function* fetchDataHandler(action) {
   try {
     const apiData = yield call(getData, action.payload);
-    yield delay(1000);
     if (apiData.success === false) {
       throw new Error();
     }
@@ -50,4 +49,3 @@ export function* dataSaga() {
     takeLatest(fetchGenres.type, fetchGenresHandler),
   ]);
 }
-
