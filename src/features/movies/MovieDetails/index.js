@@ -71,6 +71,7 @@ const MovieDetails = () => {
             {movieDetails && (
               <DetailTile
                 movieTile={true}
+                isOnMovieDetails={true}
                 posterPath={
                   movieDetails.poster_path &&
                   `${posterURL}${movieDetails.poster_path}`
