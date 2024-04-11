@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { InputWrapper, StyledForm, StyledInput, StyledSearchIcon } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchContent } from "../NavBar/navBarSlice";
@@ -7,6 +7,7 @@ import { searchBarParamName } from "../../../utils/searchBarParamName";
 import { fetchData } from "../../../utils/API/dataSlice";
 import { useDataURL } from "../../../utils/API/useDataURL";
 import { setPage } from "../../../common/Pagination/paginationSlice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 const SearchBar = () => {
   const [query, setQuery] = useState(useQueryParameters(searchBarParamName) || "");
@@ -14,6 +15,27 @@ const SearchBar = () => {
   const replaceQueryParameter = useReplaceQueryParameter();
   const dispatch = useDispatch();
   const dataURL = useDataURL(query);
+  const history = useHistory();
+  const lastPathname = useRef(history.location.pathname);
+
+  useEffect(() => {
+    const handleHistoryChange = ({ pathname }) => {
+      if (lastPathname.current !== pathname) {
+        if (query !== "") {
+          setQuery("");
+        }
+      };
+
+      lastPathname.current = pathname;
+    };
+    const unlisten = history.listen(handleHistoryChange);
+
+    return () => {
+      unlisten();
+    };
+    // because this hook shouldn't trigger when query changes
+    // eslint-disable-next-line
+  }, [history, replaceQueryParameter]);
 
   useEffect(() => {
     dispatch(setPage(1));
