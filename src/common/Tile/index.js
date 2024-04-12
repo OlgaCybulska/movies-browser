@@ -28,6 +28,7 @@ import { formatYear } from "../../utils/dataFormatFunctions";
 
 export const Tile = ({
   movieTile,
+  isOnMovieDetails,
   title,
   subtitle,
   rate,
@@ -55,7 +56,7 @@ export const Tile = ({
               ? `${subtitle}`
               : `${role} ${subtitle ? `(${formatYear(subtitle)})` : ""}`}
           </Subtitle>
-          <Genres>
+          <Genres $movieDetails={isOnMovieDetails}>
             {genres
               ? genres.map((genre, id) => <GenreTag key={id}>{genre}</GenreTag>)
               : ""}
@@ -88,6 +89,7 @@ export const DetailTile = ({
   subtitle,
   votes,
   posterPath,
+  isOnMovieDetails,
   genres,
   overview,
   isOnMainTile,
@@ -106,7 +108,11 @@ export const DetailTile = ({
       )}
       <DetailInfo>
         <DetailMovieTitle>{title}</DetailMovieTitle>
-        {subtitle && <DetailSubtitle>{subtitle}</DetailSubtitle>}
+        {subtitle && (
+          <DetailSubtitle $movieDetails={isOnMovieDetails}>
+            {subtitle}
+          </DetailSubtitle>
+        )}
         {firstData && (
           <AboutContainer>
             <AboutContent>
@@ -126,7 +132,7 @@ export const DetailTile = ({
 
         {movieTile ? (
           <>
-            <Genres>
+            <Genres $movieDetails={isOnMovieDetails}>
               {genres
                 ? genres.map((genre, id) => (
                     <GenreTag key={id}>{genre}</GenreTag>
@@ -139,6 +145,7 @@ export const DetailTile = ({
                 rate={rate}
                 isOnBackdrop={isOnBackdrop}
                 isOnMainTile={isOnMainTile}
+                isOnMovieDetails={isOnMovieDetails}
               />
             )}
           </>

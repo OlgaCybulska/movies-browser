@@ -1,10 +1,20 @@
 import { Rate, RateStar, RatingContainer, RatingRange, Votes } from "./styled";
 
-const Rating = ({ rate, votes, isOnBackdrop, isOnMainTile }) => {
+const Rating = ({
+  rate,
+  votes,
+  isOnBackdrop,
+  isOnMainTile,
+  isOnMovieDetails,
+}) => {
   return (
     <>
       {votes ? (
-        <RatingContainer $backdrop={isOnBackdrop} $mainTile={isOnMainTile}>
+        <RatingContainer
+          $backdrop={isOnBackdrop}
+          $mainTile={isOnMainTile}
+          $movieDetails={isOnMovieDetails}
+        >
           <RateStar $backdrop={isOnBackdrop} $mainTile={isOnMainTile} />
           <Rate $backdrop={isOnBackdrop} $mainTile={isOnMainTile}>
             {rate}

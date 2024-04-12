@@ -215,9 +215,6 @@ export const Overview = styled.p`
   margin: 0px;
   grid-area: d;
 
-  @media (max-width: ${({ theme }) => theme.breakpoint.laptopMax}px) {
-    margin: 16px 0 0 0;
-  }
   @media (max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px) {
     font-size: 18px;
   }
@@ -312,6 +309,12 @@ export const DetailSubtitle = styled(Subtitle)`
   line-height: 1.2;
   color: ${({ theme }) => theme.color.black};
 
+  ${({ $movieDetails }) =>
+    $movieDetails &&
+    css`
+      margin: 0;
+    `}
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     font-size: 13px;
     line-height: 1.3;
@@ -374,6 +377,21 @@ export const Genres = styled.ul`
   align-items: flex-start;
   gap: 8px;
   flex-wrap: wrap;
+
+  ${({ $movieDetails }) =>
+    $movieDetails &&
+    css`
+      gap: 16px;
+      margin: 0 0 0 0;
+    `}
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.largeMobileMax}px) {
+    ${({ $movieDetails }) =>
+      $movieDetails &&
+      css`
+        gap: 8px;
+      `}
+  }
 `;
 
 export const GenreTag = styled.li`

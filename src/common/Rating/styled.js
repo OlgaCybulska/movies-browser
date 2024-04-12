@@ -19,6 +19,13 @@ export const RatingContainer = styled.div`
       gap: 8px;
     `}
 
+  ${({ $movieDetails }) =>
+    $movieDetails &&
+    css`
+      gap: 8px;
+      margin: 0;
+    `}
+
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}px) {
     height: 30px;
     margin-top: 0;
@@ -150,6 +157,7 @@ export const Votes = styled.span`
   ${({ $mainTile }) =>
     $mainTile &&
     css`
+      margin-left: 4px;
       margin-top: 9px;
       font-size: 14px;
       line-height: 1.2;
